@@ -312,11 +312,6 @@ The paper types incorporate methodological proposals, empirical studies, literat
  
 Welcome and open to have friendly academic and technical discussion with me by <a href="mailto:liyuechen@buaa.edu.cn">liyuechen@buaa.edu.cn</a>. 
 
-<!-- ===== Last updated ===== -->
-<div id="last-updated">
-    Last updated: <span id="updated-time">Loading...</span>
-</div>
-
 <!-- ===== Page view count ===== -->
 <div id="view-count">
     This page has been viewed <span id="views">0</span> times.
@@ -344,29 +339,37 @@ Welcome and open to have friendly academic and technical discussion with me by <
             updatedEl.textContent = 'Error fetching update time';
         });
 
-    // ==== CountAPI page views with fallback ====
+    // ==== CountAPI page views with throttling ====
     const viewsEl = document.getElementById('views');
-    let lastCount = 0; // Local cache for last count
+    const localKey = 'lastCountApiHit';
+    const throttleMinutes = 5; // Minimum minutes between count increments from the same user
 
     function updateViews() {
-        fetch('https://api.countapi.xyz/hit/NahidaNahida/NahidaNahida.github.io?amount=1')
+        const now = Date.now();
+        const lastHit = parseInt(localStorage.getItem(localKey)) || 0;
+        let url = 'https://api.countapi.xyz/get/NahidaNahida/NahidaNahida.github.io'; // Default to just get the count
+
+        // If it's been more than throttleMinutes since the last hit, then increment the count
+        if(now - lastHit > throttleMinutes * 60 * 1000){
+            url = 'https://api.countapi.xyz/hit/NahidaNahida/NahidaNahida.github.io?amount=1';
+            localStorage.setItem(localKey, now); //  Update last hit time
+        }
+
+        fetch(url)
             .then(res => res.json())
             .then(data => {
                 if(data && data.value !== undefined){
-                    lastCount = data.value;
-                    viewsEl.textContent = lastCount;
-                } else {
-                    viewsEl.textContent = lastCount; // Fallback to last count if API response is unexpected
+                    viewsEl.textContent = data.value;
                 }
             })
             .catch(err => {
                 console.error(err);
-                viewsEl.textContent = lastCount; // Fallback to last count if API call fails
             });
     }
 
-    updateViews(); // Initial call to update views on page load
+    updateViews(); // Update views on page load
 </script>
+
 <!-- ===== Scripts ===== -->
 <script>
     // ===== Generate Table of Contents =====
