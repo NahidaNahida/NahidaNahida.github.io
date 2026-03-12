@@ -8,7 +8,7 @@ body{
 }
 
 #main-content {
-    margin-left: 220px; /* 或者用 transform: translateX(50px); */
+    margin-left: 220px; /* Or use transform: translateX(50px); */
     transition: margin-left 0.3s ease;
 }
 

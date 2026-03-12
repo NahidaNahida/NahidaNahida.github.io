@@ -314,8 +314,30 @@ Welcome and open to have friendly academic and technical discussion with me by <
 
 <!-- ===== Last updated ===== -->
 <div id="last-updated">
-    Last updated: <span id="updated-time"></span>
+    Last updated: <span id="updated-time">Loading...</span>
 </div>
+
+<script>
+    // ===== Fetch latest PR from GitHub API =====
+    const githubUser = 'NahidaNahida';
+    const githubRepo = 'NahidaNahida.github.io';
+
+    fetch(`https://api.github.com/repos/${githubUser}/${githubRepo}/pulls?state=all&sort=updated&direction=desc`)
+        .then(response => response.json())
+        .then(prs => {
+            if (prs && prs.length > 0) {
+                const latestPR = prs[0];
+                const updatedAt = new Date(latestPR.updated_at);
+                document.getElementById('updated-time').textContent = updatedAt.toLocaleString();
+            } else {
+                document.getElementById('updated-time').textContent = 'No PRs yet';
+            }
+        })
+        .catch(err => {
+            console.error(err);
+            document.getElementById('updated-time').textContent = 'Error fetching update time';
+        });
+</script>
 
 <!-- ===== Page view count ===== -->
 <div id="view-count">
