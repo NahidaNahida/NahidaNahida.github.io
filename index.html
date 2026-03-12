@@ -312,50 +312,64 @@ The paper types incorporate methodological proposals, empirical studies, literat
  
 Welcome and open to have friendly academic and technical discussion with me by <a href="mailto:liyuechen@buaa.edu.cn">liyuechen@buaa.edu.cn</a>. 
 
-<div id="view-count">
-    This page has been viewed <span id="views">Loading...</span> times.
-</div>
+<!-- ===== Page view count ===== -->
+<!-- <div id="view-count">
+    This page has been viewed <span id="views">0</span> times.
+</div> -->
 
 <script>
-const viewsEl = document.getElementById('views');
-const localKey = 'lastCountApiHit';
-const throttleMinutes = 5;
+    // ==== GitHub latest commit info ====
+    const githubUser = 'NahidaNahida';
+    const githubRepo = 'NahidaNahida.github.io';
+    const branch = 'main';
+    const updatedEl = document.getElementById('updated-time');
 
-// Get current view count from CountAPI
-function getCurrentViews() {
-    return fetch('https://api.countapi.xyz/get/NahidaNahida/NahidaNahida.github.io')
+    fetch(`https://api.github.com/repos/${githubUser}/${githubRepo}/commits/${branch}`)
         .then(res => res.json())
-        .then(data => data && data.value !== undefined ? data.value : 0)
+        .then(commit => {
+            if(commit && commit.commit && commit.commit.author) {
+                const updatedAt = new Date(commit.commit.author.date);
+                updatedEl.textContent = updatedAt.toLocaleString();
+            } else {
+                updatedEl.textContent = 'No commits yet';
+            }
+        })
         .catch(err => {
             console.error(err);
-            return 0; // Return 0 if there's an error
+            updatedEl.textContent = 'Error fetching update time';
         });
-}
 
-// Update view count with throttling
-async function updateViews() {
-    const now = Date.now();
-    const lastHit = parseInt(localStorage.getItem(localKey)) || 0;
+    // ==== CountAPI page views with throttling ====
+    const viewsEl = document.getElementById('views');
+    const localKey = 'lastCountApiHit';
+    const throttleMinutes = 5; // e.g., only hit CountAPI once every 5 minutes per user
 
-    let currentViews = await getCurrentViews(); // Get current views first
-    viewsEl.textContent = currentViews;
+    function updateViews() {
+        const now = Date.now();
+        const lastHit = parseInt(localStorage.getItem(localKey)) || 0;
+        let url = 'https://api.countapi.xyz/get/NahidaNahida/NahidaNahida.github.io'; // Default to just get the count
 
-    //  Only hit CountAPI if enough time has passed since the last hit
-    if(now - lastHit > throttleMinutes * 60 * 1000){
-        fetch('https://api.countapi.xyz/hit/NahidaNahida/NahidaNahida.github.io?amount=1')
+        // If it's been more than throttleMinutes since the last hit, then increment the count
+        if(now - lastHit > throttleMinutes * 60 * 1000){
+            url = 'https://api.countapi.xyz/hit/NahidaNahida/NahidaNahida.github.io?amount=1';
+            localStorage.setItem(localKey, now); //  Update last hit time
+        }
+
+        fetch(url)
             .then(res => res.json())
             .then(data => {
                 if(data && data.value !== undefined){
                     viewsEl.textContent = data.value;
-                    localStorage.setItem(localKey, now); //  Update last hit time
                 }
             })
-            .catch(err => console.error(err));
+            .catch(err => {
+                console.error(err);
+            });
     }
-}
 
-updateViews();
+    updateViews(); // Update views on page load
 </script>
+
 <!-- ===== Scripts ===== -->
 <script>
     // ===== Generate Table of Contents =====
