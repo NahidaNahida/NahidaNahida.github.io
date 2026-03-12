@@ -318,19 +318,20 @@ Welcome and open to have friendly academic and technical discussion with me by <
 </div>
 
 <script>
-    // ===== Fetch latest PR from GitHub API =====
+    // GitHub repo information
     const githubUser = 'NahidaNahida';
     const githubRepo = 'NahidaNahida.github.io';
+    const branch = 'main';
 
-    fetch(`https://api.github.com/repos/${githubUser}/${githubRepo}/pulls?state=all&sort=updated&direction=desc`)
+    // Call GitHub API to get the latest commit information for the specified branch
+    fetch(`https://api.github.com/repos/${githubUser}/${githubRepo}/commits/${branch}`)
         .then(response => response.json())
-        .then(prs => {
-            if (prs && prs.length > 0) {
-                const latestPR = prs[0];
-                const updatedAt = new Date(latestPR.updated_at);
+        .then(commit => {
+            if (commit && commit.commit && commit.commit.author) {
+                const updatedAt = new Date(commit.commit.author.date);
                 document.getElementById('updated-time').textContent = updatedAt.toLocaleString();
             } else {
-                document.getElementById('updated-time').textContent = 'No PRs yet';
+                document.getElementById('updated-time').textContent = 'No commits yet';
             }
         })
         .catch(err => {
