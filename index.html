@@ -317,15 +317,19 @@ Welcome and open to have friendly academic and technical discussion with me by <
     Last updated: <span id="updated-time">Loading...</span>
 </div>
 
+<!-- ===== Page view count ===== -->
+<div id="view-count">
+    This page has been viewed <span id="views">0</span> times.
+</div>
+
 <script>
-    // GitHub repo information
+    // ===== GitHub latest commit =====
     const githubUser = 'NahidaNahida';
     const githubRepo = 'NahidaNahida.github.io';
     const branch = 'main';
 
-    // Call GitHub API to get the latest commit information for the specified branch
     fetch(`https://api.github.com/repos/${githubUser}/${githubRepo}/commits/${branch}`)
-        .then(response => response.json())
+        .then(res => res.json())
         .then(commit => {
             if (commit && commit.commit && commit.commit.author) {
                 const updatedAt = new Date(commit.commit.author.date);
@@ -338,13 +342,18 @@ Welcome and open to have friendly academic and technical discussion with me by <
             console.error(err);
             document.getElementById('updated-time').textContent = 'Error fetching update time';
         });
-</script>
 
-<!-- ===== Page view count ===== -->
-<div id="view-count">
-    This page has been viewed <span id="views">0</span> times.
-</div>
-</div>
+    // ===== Global page view counter (CountAPI) =====
+    fetch('https://api.countapi.xyz/hit/NahidaNahida/NahidaNahida.github.io')
+        .then(res => res.json())
+        .then(data => {
+            document.getElementById('views').textContent = data.value;
+        })
+        .catch(err => {
+            console.error(err);
+            document.getElementById('views').textContent = 'Error fetching views';
+        });
+</script>
 
 <!-- ===== Scripts ===== -->
 <script>
