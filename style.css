@@ -1,5 +1,5 @@
 body{
-  max-width:1400px;
+  max-width:1200px;
   margin:auto;
   font-family: "Palatino Linotype","Book Antiqua",Palatino,serif;
   background:#f7f8fc;
@@ -8,7 +8,7 @@ body{
 }
 
 #main-content {
-    margin-left: 220px; /* Or use transform: translateX(50px); */
+    margin-left: 240px; /* Or use transform: translateX(50px); */
     transition: margin-left 0.3s ease;
 }
 
