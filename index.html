@@ -323,38 +323,50 @@ Welcome and open to have friendly academic and technical discussion with me by <
 </div>
 
 <script>
-    // ===== GitHub latest commit =====
+    // ==== GitHub latest commit info ====
     const githubUser = 'NahidaNahida';
     const githubRepo = 'NahidaNahida.github.io';
     const branch = 'main';
+    const updatedEl = document.getElementById('updated-time');
 
     fetch(`https://api.github.com/repos/${githubUser}/${githubRepo}/commits/${branch}`)
         .then(res => res.json())
         .then(commit => {
-            if (commit && commit.commit && commit.commit.author) {
+            if(commit && commit.commit && commit.commit.author) {
                 const updatedAt = new Date(commit.commit.author.date);
-                document.getElementById('updated-time').textContent = updatedAt.toLocaleString();
+                updatedEl.textContent = updatedAt.toLocaleString();
             } else {
-                document.getElementById('updated-time').textContent = 'No commits yet';
+                updatedEl.textContent = 'No commits yet';
             }
         })
         .catch(err => {
             console.error(err);
-            document.getElementById('updated-time').textContent = 'Error fetching update time';
+            updatedEl.textContent = 'Error fetching update time';
         });
 
-    // ===== Global page view counter (CountAPI) =====
-    fetch('https://api.countapi.xyz/hit/NahidaNahida/NahidaNahida.github.io')
-        .then(res => res.json())
-        .then(data => {
-            document.getElementById('views').textContent = data.value;
-        })
-        .catch(err => {
-            console.error(err);
-            document.getElementById('views').textContent = 'Error fetching views';
-        });
+    // ==== CountAPI page views with fallback ====
+    const viewsEl = document.getElementById('views');
+    let lastCount = 0; // Local cache for last count
+
+    function updateViews() {
+        fetch('https://api.countapi.xyz/hit/NahidaNahida/NahidaNahida.github.io?amount=1')
+            .then(res => res.json())
+            .then(data => {
+                if(data && data.value !== undefined){
+                    lastCount = data.value;
+                    viewsEl.textContent = lastCount;
+                } else {
+                    viewsEl.textContent = lastCount; // Fallback to last count if API response is unexpected
+                }
+            })
+            .catch(err => {
+                console.error(err);
+                viewsEl.textContent = lastCount; // Fallback to last count if API call fails
+            });
+    }
+
+    updateViews(); // Initial call to update views on page load
 </script>
-
 <!-- ===== Scripts ===== -->
 <script>
     // ===== Generate Table of Contents =====
