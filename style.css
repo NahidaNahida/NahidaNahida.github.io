@@ -54,21 +54,21 @@ h1, p {
     text-align: center;
 }
 
-/* 二次元风格卡片 */
+ 
 .profile{
   display:flex;
   gap:30px;
   align-items:center;
-  background:#fff; /* 卡片背景 */
-  border-radius:16px; /* 圆角 */
-  box-shadow:0 8px 24px rgba(0,0,0,0.15); /* 阴影 */
-  padding:20px; /* 内边距 */
+  background:#fff;  
+  border-radius:16px;  
+  box-shadow:0 8px 24px rgba(0,0,0,0.15);  
+  padding:20px;  
   margin-bottom:30px;
   transition: transform 0.3s;
 }
 
 .profile:hover{
-  transform: translateY(-5px); /* 悬浮效果 */
+  transform: translateY(-5px);  
 }
 
 .profile img{
@@ -81,7 +81,7 @@ h1, p {
   flex:1;
 }
 
-/* 列表样式 */
+ 
 ul{
   padding-left:20px;
 }
