@@ -1,0 +1,60 @@
+body{
+  max-width:900px;
+  margin:auto;
+  font-family:"Palatino Linotype","Book Antiqua",Palatino,serif;
+  background:#f8f9ff;
+  line-height:1.7;
+  padding:40px;
+  color:#333;
+}
+
+h1{
+  font-size:42px;
+  margin-bottom:5px;
+  background: linear-gradient(90deg,#6a8cff,#c58cff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+h2{
+  border-bottom:2px dashed #cfd6ff;
+  padding-bottom:6px;
+  margin-top:40px;
+  color:#4a5bdc;
+}
+
+a{
+  color:#5a6cff;
+  text-decoration:none;
+}
+
+a:hover{
+  color:#9b6cff;
+  text-decoration:underline;
+}
+
+.header{
+  margin-bottom:40px;
+}
+
+.profile{
+  display:flex;
+  gap:30px;
+  align-items:center;
+}
+
+.profile img{
+  width:140px;
+  border-radius:12px;
+  box-shadow:0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* 二次元风格卡片 */
+
+ul{
+  padding-left:20px;
+}
+
+li{
+  margin-bottom:8px;
+}
