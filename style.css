@@ -1,35 +1,38 @@
 body{
-  max-width:900px;
+  max-width:1100px;
   margin:auto;
-  font-family:"Palatino Linotype","Book Antiqua",Palatino,serif;
-  background:#f8f9ff;
-  line-height:1.7;
+  font-family: "Palatino Linotype","Book Antiqua",Palatino,serif;
+  background:#f7f8fc;
+  line-height:1.6;
   padding:40px;
-  color:#333;
+}
+
+#main-content {
+    margin-left: 220px; /* 或者用 transform: translateX(50px); */
+    transition: margin-left 0.3s ease;
+}
+
+:lang(zh){
+  font-family: "KaiTi","STKaiti","Kaiti SC","Songti SC",serif;
 }
 
 h1{
   font-size:42px;
   margin-bottom:5px;
-  background: linear-gradient(90deg,#6a8cff,#c58cff);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
 }
 
 h2{
-  border-bottom:2px dashed #cfd6ff;
-  padding-bottom:6px;
+  border-bottom:2px solid #ddd;
+  padding-bottom:5px;
   margin-top:40px;
-  color:#4a5bdc;
 }
 
 a{
-  color:#5a6cff;
+  color:#2a5db0;
   text-decoration:none;
 }
 
 a:hover{
-  color:#9b6cff;
   text-decoration:underline;
 }
 
@@ -37,10 +40,35 @@ a:hover{
   margin-bottom:40px;
 }
 
+.mybold {
+    color: purple;
+    font-weight: bold;
+}
+
+.venue {
+    color: purple;
+    font-style: italic;
+}
+
+h1, p {
+    text-align: center;
+}
+
+/* 二次元风格卡片 */
 .profile{
   display:flex;
   gap:30px;
   align-items:center;
+  background:#fff; /* 卡片背景 */
+  border-radius:16px; /* 圆角 */
+  box-shadow:0 8px 24px rgba(0,0,0,0.15); /* 阴影 */
+  padding:20px; /* 内边距 */
+  margin-bottom:30px;
+  transition: transform 0.3s;
+}
+
+.profile:hover{
+  transform: translateY(-5px); /* 悬浮效果 */
 }
 
 .profile img{
@@ -49,8 +77,11 @@ a:hover{
   box-shadow:0 4px 12px rgba(0,0,0,0.1);
 }
 
-/* 二次元风格卡片 */
+.profile div{
+  flex:1;
+}
 
+/* 列表样式 */
 ul{
   padding-left:20px;
 }
@@ -58,3 +89,5 @@ ul{
 li{
   margin-bottom:8px;
 }
+
+ 

@@ -1,156 +1,360 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Yuechen Li (李玥辰)</title>
+    <meta charset="UTF-8">
+    <title>Yuechen Li</title>
+    <link rel="stylesheet" href="style.css">
 
-<style>
+    <!-- icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/academicons/academicons@1.9.1/css/academicons.min.css">
 
-body{
-  max-width:900px;
-  margin:auto;
-  font-family:"Palatino Linotype","Book Antiqua",Palatino,serif;
-  background:#f7f8fc;
-  line-height:1.6;
-  padding:40px;
-}
+    <style>
+        /* ===== Sidebar styles ===== */
+        #sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 200px;
+            height: 100%;
+            background-color: #f5f5f5;
+            border-right: 1px solid #ccc;
+            padding: 10px;
+            overflow-y: auto;
+            transition: transform 0.3s ease;
+            z-index: 1000;
+        }
+        #sidebar.hidden {
+            transform: translateX(-168px);
+        }
+        #toggle-sidebar {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+        #toc ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        #toc li {
+            margin: 5px 40px;
+        }
+        #toc a {
+            text-decoration: none;
+            color: #333;
+        }
 
-h1{
-  font-size:42px;
-  margin-bottom:5px;
-}
+        /* ===== Main content adjustment ===== */
+        body {
+            margin-left: 200px; /* leave space for sidebar */
+            padding: 20px;
+            font-family: Arial, sans-serif;
+        }
 
-h2{
-  border-bottom:2px solid #ddd;
-  padding-bottom:5px;
-  margin-top:40px;
-}
+        /* ===== Footer styles ===== */
+        #last-updated, #view-count {
+            margin-top: 20px;
+            font-size: 0.9em;
+            color: gray;
+        }
+    </style>
+</head>
 
-a{
-  color:#2a5db0;
-  text-decoration:none;
-}
+<body>
+<div id="main-content">
+<!-- ===== Sidebar / Table of Contents ===== -->
+<div id="sidebar">
+    <button id="toggle-sidebar">☰</button>
+    <nav id="toc">
+        <b>Contents</b>
+        <ul id="toc-list"></ul>
+    </nav>
+</div>
+<head>
+    <meta charset="UTF-8">
+    <title>Yuechen Li</title>
+    <link rel="stylesheet" href="style.css">
 
-a:hover{
-  text-decoration:underline;
-}
-
-.header{
-  margin-bottom:40px;
-}
-
-.profile{
-  display:flex;
-  gap:30px;
-  align-items:center;
-}
-
-.profile img{
-  width:140px;
-  border-radius:10px;
-}
-
-</style>
-
+    <!--icons-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/academicons/academicons@1.9.1/css/academicons.min.css">
 </head>
 
 <body>
 
 <div class="header">
 
-<h1>🌿 Nahida</h1>
+<h1>Yuechen Li (<span lang="zh">李玥辰</span>)</h1>
 
 <!-- <p>
 Student / Developer
 </p> -->
 
-<p>
-<a href="https://github.com/NahidaNahida">GitHub</a> |
-<a href="https://scholar.google.com.hk/citations?user=hf8TWEMAAAAJ&hl=zh-CN">Google Scholar</a> |
-<a href="https://orcid.org/0009-0006-5109-3288">ORCID</a> |
-<a href="liyuechen@buaa.edu.cn">Email</a>
+ 
+<p class="icon-links">
+  <a href="https://github.com/NahidaNahida" target="_blank">
+    <i class="fab fa-github"></i> GitHub
+  </a> |
+    <a href="https://scholar.google.com.hk/citations?user=hf8TWEMAAAAJ&hl=zh-CN" target="_blank">
+    <i class="fab fa-google"></i> Google Scholar
+  </a> |
+  <a href="https://orcid.org/0009-0006-5109-3288" target="_blank">
+    <i class="fab fa-orcid"></i> ORCID
+  </a>
 </p>
-
 </div>
 
 
 <div class="profile">
 
-<img src="avatar.png">
-
 <div>
 
-<p>
-TODO
-</p>
+ 
+I am a four-year Ph.D. candidate with Beihang University. 
+My interest includes both theoratical and empirical research on:
+foundations of quantum software engineering (QSE), and
+applications of quantum information theory / quantum computing. 
+My current studies during my Ph.D. program have a focus on quantum software testing.
+
 
 </div>
 
 </div>
 
 
-<h2>Research Interests</h2>
-
-<ul>
-<li>TODO</li>
-</ul>
+ 
 
 
 <h2>Education</h2>
 
 <ul>
-<li><b>B.Sc. Degree</b> School of Automation Science and Electrical Engineering, Beihang University (2018.9-2022.6)</li>
-<li><b>Ph.D. Degree</b> School of Automation Science and Electrical Engineering, Beihang University (2022.9-Now)</li>
+<li><b>Ph.D. degree</b>
+    <br> 
+    School of Automation Science and Electrical Engineering, Beihang University, Beijing, China (2022.9-Now)
+</li>
+<li><b>Joint Ph.D. student porgram</b>
+    <br> 
+    Faculty of Information Science and Electrical Engineering, Kyushu University, Fukuoka, Japan (2025.10-2026.9)
+</li>
+<li><b>B.Sc. degree</b>
+    <br>
+    School of Automation Science and Electrical Engineering, Beihang University, Beijing, China (2018.9-2022.6)
+</li>
 </ul>
 
 
-<h2>Publications</h2>
+<h2>
+    Paper (selective)
+</h2>
+
+<h3>
+    Quantum Software Engineering
+</h3>
+My research covers mutiple phases or activities of the quantum software development lifecycle. 
+The paper types incorporate methodological proposals, empirical studies, literature reviews, and tooling constructions.
+
+<h4>Software Testing & Debugging</h4>
+<ul>
+    <li>
+        <b>Yuechen Li</b>, Kai-Yuan Cai, Beibei Yin.
+        <i>A Dynamic Test Oracle for Quantum Programs with Separable Output States</i>[J].
+        IEEE Transactions on Software Engineering, 2026, just accepted. 
+        (<span class="venue">TSE</span>, <span class="mybold">CCF-A 2026</span>)
+        <a href="https://ieeexplore.ieee.org/abstract/document/11421015">[Paper]</a>
+        <a href="https://github.com/NahidaNahida/doss_repo">[Artifact]</a>
+    </li>
+    
+    <li>
+        <b>Yuechen Li</b>, Minqi Shao, Jianjun Zhao, Qichen Wang. 
+        <i>A Methodological Analysis of Empirical Studies in Quantum Software Testing</i>[J]. 
+        arXiv preprint arXiv:2601.08367, 2026. 
+        (<span class="venue">arXiv</span>)
+        <a href="https://arxiv.org/pdf/2601.08367">[Paper]</a>
+        <a href="https://github.com/NahidaNahida/QST-empirical-study">[Artifact]</a>
+    </li>
+    
+    <li>
+        Linzhi Huang, Hanyu Pei, <b>Yuechen Li</b>, Beibei Yin, Kai-Yuan Cai.
+        <i>A Dynamic Testing Strategy with Incremental Learning Model for Quantum Programs</i>[J]
+        IEEE Transactions on Quantum Engineering, 2025, 7: 1-27.
+        (<span class="venue">TQE</span>, <span class="mybold">JCR-Q1 2025</span>)
+        <a href="https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=11223239">[Paper]</a>
+        <a href="https://github.com/pathuang1112/QDT_IL">[Artifact]</a>
+    </li>
+    
+    <li>
+        <b>Yuechen Li</b>, Kai-Yuan Cai, Beibei Yin. 
+        <i>Preparation and Utilization of Mixed States for Testing Quantum Programs—RCR Report</i>[J].
+        ACM Transactions on Software Engineering and Methodology, 2025, just accepted. 
+        (<span class="venue">TOSEM</span>, <span class="mybold">CCF-A 2026</span>)
+        <a href="https://dl.acm.org/doi/epdf/10.1145/3786776">[Paper]</a>
+        <a href="https://github.com/NahidaNahida/mstcs">[Artifact]</a> 
+    </li>
+
+    <li>
+        <b>Yuechen Li</b>, Kai-Yuan Cai, Beibei Yin. 
+        <i>Preparation and Utilization of Mixed States for Testing Quantum Programs</i>[J].
+        ACM Transactions on Software Engineering and Methodology, 2025, 34(8): 1-44. 
+        (<span class="venue">TOSEM</span>, <span class="mybold">CCF-A 2026</span>)
+        <a href="https://dl.acm.org/doi/pdf/10.1145/3736757">[Paper]</a>
+        <a href="https://zenodo.org/records/15462299">[Artifact]</a>
+    </li>
+    
+    <li>
+        Linzhi Huang, Hanyu Pei, <b>Yuechen Li</b>, Beibei Yin, Kai-Yuan Cai. 
+        <i>A Strategy of Dynamic Random Testing with Hybrid Distance Metrics for Quantum Programs</i>[C]
+        //2024 IEEE 24th International Conference on Software Quality, Reliability and Security (QRS). 2024: 1-12.
+        (<span class="venue">QRS</span>, <span class="mybold">CCF-C 2026</span>)
+        <a href="https://ieeexplore.ieee.org/abstract/document/10684628">[Paper]</a>
+    </li>
+
+    <li>
+        <b>Yuechen Li</b>, Hanyu Pei, Linzhi Huang, Beibei Yin, Kai-Yuan Cai. 
+        <i>Automatic Repair of Quantum Programs via Unitary Operation</i>[J]. 
+        ACM Transactions on Software Engineering and Methodology, 2024, 33(6): 1-43. 
+        (<span class="venue">TOSEM</span>, <span class="mybold">CCF-A 2026</span>)
+        <a href="https://dl.acm.org/doi/pdf/10.1145/3664604">[Paper]</a>
+    </li>
+</ul>
+
+<h4>Search-based Software Engineering</h4>
 
 <ul>
-<li>
-Author, <i>Title of Paper</i>, Conference/Journal, Year
-</li>
-
-<li>
-Author, <i>Another Paper</i>, Workshop, Year
-</li>
+    <li>
+        Man Zhang, <b>Yuechen Li</b>, Tao Yue, Kai-Yuan Cai.
+        <i>Empirical Studies on Quantum Optimization for Software Engineering: A Systematic Analysis</i>[J]. 
+        arXiv preprint arXiv:2510.27113, 2025.
+        (<span class="venue">arXiv</span>) 
+        <a href="https://arxiv.org/pdf/2510.27113">[Paper]</a>
+        <a href="https://github.com/WSE-Lab/QuantumOpt4SE-EmpiricalStudies">[Artifact]</a>
+    </li>
+ 
+    <li>
+        Man Zhang, <b>Yuechen Li</b>, Tao Yue, Kai-Yuan Cai.
+        <i>Quantum Optimization for Software Engineering: A Survey</i>[J]. 
+        arXiv preprint arXiv:2506.16878, 2025.
+        (<span class="venue">arXiv</span>) 
+        <a href="https://arxiv.org/pdf/2506.16878">[Paper]</a>
+        <a href="https://github.com/WSE-Lab/QuantumOpt4SE">[Artifact]</a>
+    </li>
 </ul>
-
-
-<h2>Projects</h2>
-
+ 
+<h4>Software Maintenance & Evolution</h4>
 <ul>
-
-<li>
-<b>Project Name</b>  
-<br>
-Short description of the project.
-<br>
-<a href="#">GitHub Repo</a>
-</li>
-
-<li>
-<b>Another Project</b>  
-<br>
-Short description.
-</li>
-
+    <li>
+        Zenghui Zhou*, <b>Yuechen Li</b>*, Yi Cai, Jinlong Wen, Xiaohan Yu, Zheng Zheng, Beibei Yin.
+        <i>Code Comments for Quantum Software Development Kits: An Empirical Study on Qiskit</i>[J].
+        arXiv preprint arXiv:2512.00766, 2025.
+        (* <i>Equal contribution</i>)
+        (<span class="venue">arXiv</span>)
+        <a href="https://arxiv.org/pdf/2512.00766">[Paper]</a>
+        <a href="https://figshare.com/articles/dataset/Code_Comments_for_Quantum_Software_Development_Kits_An_Empirical_Study_on_Qiskit/30085657/1">[Artifact]</a>
+    </li>
+    
+    <li>
+        Xiaohan Yu, <b>Yuechen Li</b>, Jinlong Wen, Kai-Yuan Cai, Beibei Yin.
+        <i>QuAInth: A Code Comment Approach for Application-Oriented Quantum Programs via N-Version LLMs</i>[C]
+        //2025 25th International Conference on Software Quality, Reliability and Security (QRS). 2025: 13-24.
+        (<span class="venue">QRS</span>, <span class="mybold">CCF-C 2026</span>)
+        <a href="https://ieeexplore.ieee.org/abstract/document/11173486">[Paper]</a>
+        <a href="https://github.com/dawn9999999/QuAInth">[Artifact]</a>
+    </li>
 </ul>
 
+
+<h2>Academic Service</h2>
+<h3>Invited reviewer</h3>
+<ul>
+<li><b>2025</b>:
+    IEEE Transactions on Software Engineering, 
+    ACM Transactions on Software Engineering and its Methodology,
+    Empirical Software Engineering, 
+    Knowledge-based System
+</li>
+<li><b>2024</b>:
+    IEEE Software
+</li> 
+</ul>
+
+<h3>Talk</h3>
+<ul>
+    <li>
+        <b>Yuechen Li</b>. <i>Exploring Quantum Optimization for Software Engineering</i>. 
+        1st Workshop on Quantum Optimization Algorithms and Applications 
+        (co-located with 2025 IEEE Congress on Evolutionary Computation), 
+        June 2025, Hangzhou, China. (<span class="mybold">Lightning talk</span>)
+        <a href="docs/talks/Q-OptAA2025_QOpt4CSE_YuechenLi.pdf">[Slides]</a>
+    </li>
+</ul>
+ 
+<h2> 
+    Funding 
+</h2>
+<ul>
+<li>    
+    Visiting Ph.D. student program, China Scholarship Council (CSC), China (2025.10-2026.9)
+</li>
+</ul>
+
+<h2>Award (selective)</h2> 
+<ul>
+<li>
+    Outstanding Graduate of Regular Higher Education Institutions in Beijing (<span lang="zh">北京市普通高等学校优秀毕业生</span>, 2022.7)
+</li>
+<li>
+    Outstanding Student of Beihang University (<span lang="zh">北京航空航天大学校级优秀生</span>, 2021.9)
+</li>
+</ul>
 
 <h2>Contact</h2>
+ 
+Welcome and open to have friendly academic and technical discussion with me by <a href="mailto:liyuechen@buaa.edu.cn">liyuechen@buaa.edu.cn</a>. 
 
-<p>
-Email: your_email@example.com
-</p>
+<!-- ===== Last updated ===== -->
+<div id="last-updated">
+    Last updated: <span id="updated-time"></span>
+</div>
 
-<p>
-GitHub:  
-<a href="https://github.com/NahidaNahida">
-github.com/NahidaNahida
-</a>
-</p>
+<!-- ===== Page view count ===== -->
+<div id="view-count">
+    This page has been viewed <span id="views">0</span> times.
+</div>
+</div>
 
+<!-- ===== Scripts ===== -->
+<script>
+    // ===== Generate Table of Contents =====
+    const tocList = document.getElementById('toc-list');
+    document.querySelectorAll('h2, h3, h4').forEach((heading) => {
+        const id = heading.textContent.replace(/\s+/g, '_');
+        heading.id = id;
+        const li = document.createElement('li');
+        li.style.marginLeft = heading.tagName === 'H2' ? '0px' :
+                             heading.tagName === 'H3' ? '10px' : '20px';
+        const a = document.createElement('a');
+        a.href = `#${id}`;
+        a.textContent = heading.textContent;
+        li.appendChild(a);
+        tocList.appendChild(li);
+    });
+
+    // ===== Toggle sidebar visibility =====
+    document.getElementById('toggle-sidebar').addEventListener('click', () => {
+        document.getElementById('sidebar').classList.toggle('hidden');
+    });
+
+    // ===== Display last updated timestamp =====
+    const now = new Date();
+    document.getElementById('updated-time').textContent = now.toLocaleString();
+
+    // ===== Page view counter (localStorage) =====
+    let count = localStorage.getItem('page_views') || 0;
+    count = parseInt(count) + 1;
+    localStorage.setItem('page_views', count);
+    document.getElementById('views').textContent = count;
+</script>
 
 </body>
 </html>
