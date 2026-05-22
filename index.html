@@ -44,6 +44,16 @@
         #toc a {
             text-decoration: none;
             color: #333;
+            font-size: 0.9em;
+            transition: color 0.2s ease, font-weight 0.2s ease;
+        }
+        #toc a:hover {
+            color: #2a5db0;
+        }
+        #toc a.active {
+            color: #111;
+            font-weight: bold;
+            text-decoration: underline;
         }
 
         /* ===== Main content adjustment ===== */
@@ -115,7 +125,7 @@ The current studies during his Ph.D. program have a focus on quantum software te
 <br>
 <br>
 
-<div class="profile">
+<!-- <div class="profile">
 <div>
 <span style="font-size:25px; font-weight:bold;">Bulletin</span><br>
 
@@ -125,7 +135,30 @@ has been accepted for publication in IEEE Transactions on Software Engineering (
 This study systematically investigates the test oracle problem for quantum programs,
 and provides a feasible solution for handling curse of dimensionality in quantum software testing.
 </div>
-</div>
+</div> -->
+
+<h2>News</h2>
+
+<ul>
+<li><b>(2026.5)</b> 
+    A systematic literature review <a href="https://dl.acm.org/doi/10.1145/3816147"><i>
+    Quantum Optimization for Software Engineering: A Survey</i></a> has just been accepted by 
+    ACM Transactions on Software Engineering and Methodology (TOSEM). This survey comprehensively 
+    reviews the methodologies of applying quantum-inspired and quantum optimization algorithms to 
+    handle software engineering problems and outlines potential research directions in this emerging area.
+</li>
+
+<li><b>(2026.3)</b> 
+    A new study <a href="https://ieeexplore.ieee.org/abstract/document/11421015"><i>
+    A Dynamic Test Oracle for Quantum Programs with Separable Output States</i></a> 
+    has been accepted for publication in IEEE Transactions on Software Engineering (TSE).
+    This study systematically investigates the test oracle problem for quantum programs,
+    and provides a feasible solution for handling curse of dimensionality in quantum software testing. 
+    One of the empirical insights is that using hypothesis tests and statistical measures as test oracles for quantum
+    software are not reliable, which is sensitive to parameter configurations and associated with inherent limitations (e.g., struggle to handle the curse of dimensionality and observe the phase).  
+</li>
+</ul>
+
 
 <h2>Education</h2>
 
@@ -158,63 +191,56 @@ The paper types incorporate methodological proposals, empirical studies, literat
 <h4>Software Testing & Debugging</h4>
 <ul>
     <li>
-        <b>Yuechen Li</b>, Kai-Yuan Cai, Beibei Yin.
+        <span class="pub-badges"><span class="venue">TSE (CCF-A)</span></span><b>Yuechen Li</b>, Kai-Yuan Cai, Beibei Yin.
         <i>A Dynamic Test Oracle for Quantum Programs with Separable Output States</i>[J].
         IEEE Transactions on Software Engineering, 2026, 25(4): 1568-1591. 
-        (<span class="venue">TSE</span>, <span class="mybold">CCF-A</span>)
         <a href="https://ieeexplore.ieee.org/abstract/document/11421015">[Paper]</a>
         <a href="https://github.com/NahidaNahida/doss_repo">[Artifact]</a>
     </li>
     
     <li>
-        <b>Yuechen Li</b>, Minqi Shao, Jianjun Zhao, Qichen Wang. 
+        <span class="pub-badges"><span class="venue">arXiv</span></span><b>Yuechen Li</b>, Minqi Shao, Jianjun Zhao, Qichen Wang.
         <i>A Methodological Analysis of Empirical Studies in Quantum Software Testing</i>[J]. 
         arXiv preprint arXiv:2601.08367, 2026. 
-        (<span class="venue">arXiv</span>)
         <a href="https://arxiv.org/pdf/2601.08367">[Paper]</a>
         <a href="https://github.com/NahidaNahida/QST-empirical-study">[Artifact]</a>
     </li>
     
     <li>
-        Linzhi Huang, Hanyu Pei, <b>Yuechen Li</b>, Beibei Yin, Kai-Yuan Cai.
+        <span class="pub-badges"><span class="venue">TQE (JCR-Q1)</span></span>Linzhi Huang, Hanyu Pei, <b>Yuechen Li</b>, Beibei Yin, Kai-Yuan Cai.
         <i>A Dynamic Testing Strategy with Incremental Learning Model for Quantum Programs</i>[J]
         IEEE Transactions on Quantum Engineering, 2025, 7: 1-27.
-        (<span class="venue">TQE</span>, <span class="mybold">JCR-Q1</span>)
         <a href="https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=11223239">[Paper]</a>
         <a href="https://github.com/pathuang1112/QDT_IL">[Artifact]</a>
     </li>
     
     <li>
-        <b>Yuechen Li</b>, Kai-Yuan Cai, Beibei Yin. 
+        <span class="pub-badges"><span class="venue">TOSEM (CCF-A)</span></span><b>Yuechen Li</b>, Kai-Yuan Cai, Beibei Yin.
         <i>Preparation and Utilization of Mixed States for Testing Quantum Programs—RCR Report</i>[J].
         ACM Transactions on Software Engineering and Methodology, 2025, just accepted. 
-        (<span class="venue">TOSEM</span>, <span class="mybold">CCF-A</span>)
         <a href="https://dl.acm.org/doi/epdf/10.1145/3786776">[Paper]</a>
         <a href="https://github.com/NahidaNahida/mstcs">[Artifact]</a> 
     </li>
 
     <li>
-        <b>Yuechen Li</b>, Kai-Yuan Cai, Beibei Yin. 
+        <span class="pub-badges"><span class="venue">TOSEM (CCF-A)</span></span><b>Yuechen Li</b>, Kai-Yuan Cai, Beibei Yin.
         <i>Preparation and Utilization of Mixed States for Testing Quantum Programs</i>[J].
         ACM Transactions on Software Engineering and Methodology, 2025, 34(8): 1-44. 
-        (<span class="venue">TOSEM</span>, <span class="mybold">CCF-A</span>)
         <a href="https://dl.acm.org/doi/pdf/10.1145/3736757">[Paper]</a>
         <a href="https://zenodo.org/records/15462299">[Artifact]</a>
     </li>
     
     <li>
-        Linzhi Huang, Hanyu Pei, <b>Yuechen Li</b>, Beibei Yin, Kai-Yuan Cai. 
+        <span class="pub-badges"><span class="venue">QRS (CCF-C)</span></span>Linzhi Huang, Hanyu Pei, <b>Yuechen Li</b>, Beibei Yin, Kai-Yuan Cai.
         <i>A Strategy of Dynamic Random Testing with Hybrid Distance Metrics for Quantum Programs</i>[C]
         //2024 IEEE 24th International Conference on Software Quality, Reliability and Security (QRS). 2024: 1-12.
-        (<span class="venue">QRS</span>, <span class="mybold">CCF-C</span>)
         <a href="https://ieeexplore.ieee.org/abstract/document/10684628">[Paper]</a>
     </li>
 
     <li>
-        <b>Yuechen Li</b>, Hanyu Pei, Linzhi Huang, Beibei Yin, Kai-Yuan Cai. 
+        <span class="pub-badges"><span class="venue">TOSEM (CCF-A)</span></span><b>Yuechen Li</b>, Hanyu Pei, Linzhi Huang, Beibei Yin, Kai-Yuan Cai.
         <i>Automatic Repair of Quantum Programs via Unitary Operation</i>[J]. 
         ACM Transactions on Software Engineering and Methodology, 2024, 33(6): 1-43. 
-        (<span class="venue">TOSEM</span>, <span class="mybold">CCF-A</span>)
         <a href="https://dl.acm.org/doi/pdf/10.1145/3664604">[Paper]</a>
     </li>
 </ul>
@@ -223,41 +249,37 @@ The paper types incorporate methodological proposals, empirical studies, literat
 
 <ul>
     <li>
-        Man Zhang, <b>Yuechen Li</b>, Tao Yue, Kai-Yuan Cai.
+        <span class="pub-badges"><span class="venue">TOSEM (CCF-A)</span></span>Man Zhang, <b>Yuechen Li</b>, Tao Yue, Kai-Yuan Cai.
+        <i>Quantum Optimization for Software Engineering: A Survey</i>[J]. 
+        ACM Transactions on Software Engineering and Methodology, 2026, just accepted.
+        <a href="https://dl.acm.org/doi/10.1145/3816147">[Paper]</a>
+        <a href="https://github.com/WSE-Lab/QuantumOpt4SE">[Artifact]</a>
+    </li>
+
+    <li>
+        <span class="pub-badges"><span class="venue">arXiv</span></span>Man Zhang, <b>Yuechen Li</b>, Tao Yue, Kai-Yuan Cai.
         <i>Empirical Studies on Quantum Optimization for Software Engineering: A Systematic Analysis</i>[J]. 
         arXiv preprint arXiv:2510.27113, 2025.
-        (<span class="venue">arXiv</span>) 
         <a href="https://arxiv.org/pdf/2510.27113">[Paper]</a>
         <a href="https://github.com/WSE-Lab/QuantumOpt4SE-EmpiricalStudies">[Artifact]</a>
-    </li>
- 
-    <li>
-        Man Zhang, <b>Yuechen Li</b>, Tao Yue, Kai-Yuan Cai.
-        <i>Quantum Optimization for Software Engineering: A Survey</i>[J]. 
-        arXiv preprint arXiv:2506.16878, 2025.
-        (<span class="venue">arXiv</span>) 
-        <a href="https://arxiv.org/pdf/2506.16878">[Paper]</a>
-        <a href="https://github.com/WSE-Lab/QuantumOpt4SE">[Artifact]</a>
     </li>
 </ul>
  
 <h4>Software Maintenance & Evolution</h4>
 <ul>
     <li>
-        Zenghui Zhou*, <b>Yuechen Li</b>*, Yi Cai, Jinlong Wen, Xiaohan Yu, Zheng Zheng, Beibei Yin.
+        <span class="pub-badges"><span class="venue">arXiv</span></span>Zenghui Zhou*, <b>Yuechen Li</b>*, Yi Cai, Jinlong Wen, Xiaohan Yu, Zheng Zheng, Beibei Yin.
         <i>Code Comments for Quantum Software Development Kits: An Empirical Study on Qiskit</i>[J].
         arXiv preprint arXiv:2512.00766, 2025.
         (* <i>Equal contribution</i>)
-        (<span class="venue">arXiv</span>)
         <a href="https://arxiv.org/pdf/2512.00766">[Paper]</a>
         <a href="https://figshare.com/articles/dataset/Code_Comments_for_Quantum_Software_Development_Kits_An_Empirical_Study_on_Qiskit/30085657/1">[Artifact]</a>
     </li>
     
     <li>
-        Xiaohan Yu, <b>Yuechen Li</b>, Jinlong Wen, Kai-Yuan Cai, Beibei Yin.
+        <span class="pub-badges"><span class="venue">QRS (CCF-C)</span></span>Xiaohan Yu, <b>Yuechen Li</b>, Jinlong Wen, Kai-Yuan Cai, Beibei Yin.
         <i>QuAInth: A Code Comment Approach for Application-Oriented Quantum Programs via N-Version LLMs</i>[C]
         //2025 25th International Conference on Software Quality, Reliability and Security (QRS). 2025: 13-24.
-        (<span class="venue">QRS</span>, <span class="mybold">CCF-C</span>)
         <a href="https://ieeexplore.ieee.org/abstract/document/11173486">[Paper]</a>
         <a href="https://github.com/dawn9999999/QuAInth">[Artifact]</a>
     </li>
@@ -267,6 +289,9 @@ The paper types incorporate methodological proposals, empirical studies, literat
 <h2>Academic Service</h2>
 <h3>Invited Reviewer</h3>
 <ul>
+<li><b>2026</b>:
+    Empirical Software Engineering
+</li>
 <li><b>2025</b>:
     IEEE Transactions on Software Engineering, 
     ACM Transactions on Software Engineering and Methodology,
@@ -320,6 +345,13 @@ your email.
     Last updated: <span id="updated-time">Loading...</span>
 </div>
 
+<div id="visitor-stats" class="visitor-stats">
+    Page visits: <strong id="visitor-page-views">Loading...</strong>
+    <div class="visitor-map" title="visitor location map">
+        <img id="visitor-location-map" title="visitor location map" src="https://smallcounter.com/map/view.php?type=180&id=1775478632" alt="Visitor location map">
+    </div>
+</div>
+
 <script>
     // GitHub repo information
     const githubUser = 'NahidaNahida';
@@ -353,6 +385,7 @@ your email.
 <script>
     // ===== Generate Table of Contents =====
     const tocList = document.getElementById('toc-list');
+    const tocLinks = [];
     document.querySelectorAll('h2, h3, h4').forEach((heading) => {
         const id = heading.textContent.replace(/\s+/g, '_');
         heading.id = id;
@@ -362,9 +395,50 @@ your email.
         const a = document.createElement('a');
         a.href = `#${id}`;
         a.textContent = heading.textContent;
+        tocLinks.push(a);
         li.appendChild(a);
         tocList.appendChild(li);
     });
+
+    const setActiveTocLink = (id) => {
+        tocLinks.forEach((link) => {
+            link.classList.toggle('active', link.getAttribute('href') === `#${id}`);
+        });
+    };
+
+    let clickedTocId = null;
+    let clickedTocTimer = null;
+
+    const updateActiveTocLink = () => {
+        if (clickedTocId) {
+            setActiveTocLink(clickedTocId);
+            return;
+        }
+
+        const headings = Array.from(document.querySelectorAll('h2, h3, h4'));
+        let activeHeading = headings[0];
+        headings.forEach((heading) => {
+            if (heading.getBoundingClientRect().top <= 120) {
+                activeHeading = heading;
+            }
+        });
+        if (activeHeading) {
+            setActiveTocLink(activeHeading.id);
+        }
+    };
+
+    tocLinks.forEach((link) => {
+        link.addEventListener('click', () => {
+            clickedTocId = link.getAttribute('href').slice(1);
+            setActiveTocLink(clickedTocId);
+            clearTimeout(clickedTocTimer);
+            clickedTocTimer = setTimeout(() => {
+                clickedTocId = null;
+            }, 700);
+        });
+    });
+    window.addEventListener('scroll', updateActiveTocLink);
+    updateActiveTocLink();
 
     // ===== Toggle sidebar visibility =====
     document.getElementById('toggle-sidebar').addEventListener('click', () => {
@@ -375,11 +449,82 @@ your email.
     const now = new Date();
     document.getElementById('updated-time').textContent = now.toLocaleString();
 
-    // ===== Page view counter (localStorage) =====
-    let count = localStorage.getItem('page_views') || 0;
-    count = parseInt(count) + 1;
-    localStorage.setItem('page_views', count);
-    document.getElementById('views').textContent = count;
+    // ===== Online visitor statistics =====
+    const VISIT_INTERVAL_MS = 6 * 60 * 60 * 1000;
+    const VISITOR_STATS_CACHE_KEY = 'visitor_stats_cache';
+    const VISITOR_STATS_LAST_COUNT_KEY = 'visitor_stats_last_count';
+    const isPublishedPage = window.location.hostname === 'nahidanahida.github.io';
+
+    const pageViewsEl = document.getElementById('visitor-page-views');
+
+    const setVisitorStats = (data) => {
+        if (!data) {
+            return;
+        }
+        pageViewsEl.textContent = data.pageViews ?? data.page_pv ?? '-';
+    };
+
+    const cachedVisitorStats = localStorage.getItem(VISITOR_STATS_CACHE_KEY);
+    if (cachedVisitorStats) {
+        try {
+            setVisitorStats(JSON.parse(cachedVisitorStats));
+        } catch (err) {
+            localStorage.removeItem(VISITOR_STATS_CACHE_KEY);
+        }
+    }
+
+    const cacheVercountStats = () => {
+        const pageViews = pageViewsEl.textContent.trim();
+        if (!pageViews || pageViews === 'Loading...' || pageViews === 'No cache') {
+            return false;
+        }
+        const data = { pageViews };
+        localStorage.setItem(VISITOR_STATS_CACHE_KEY, JSON.stringify(data));
+        return true;
+    };
+
+    const loadVisitorStats = () => {
+        const now = Date.now();
+        const lastCountedAt = Number(localStorage.getItem(VISITOR_STATS_LAST_COUNT_KEY) || 0);
+        const shouldCountVisit = isPublishedPage && now - lastCountedAt > VISIT_INTERVAL_MS;
+
+        if (!isPublishedPage) {
+            if (!cachedVisitorStats) {
+                pageViewsEl.textContent = 'No cache';
+            }
+            return;
+        }
+
+        if (!shouldCountVisit && cachedVisitorStats) {
+            return;
+        }
+
+        pageViewsEl.id = 'vercount_value_page_pv';
+
+        const counterScript = document.createElement('script');
+        counterScript.defer = true;
+        counterScript.src = 'https://events.vercount.one/js';
+        counterScript.onload = () => {
+            let attempts = 0;
+            const cacheTimer = setInterval(() => {
+                attempts += 1;
+                if (cacheVercountStats() || attempts > 20) {
+                    clearInterval(cacheTimer);
+                }
+            }, 250);
+            if (shouldCountVisit) {
+                localStorage.setItem(VISITOR_STATS_LAST_COUNT_KEY, String(now));
+            }
+        };
+        counterScript.onerror = () => {
+            if (!cachedVisitorStats) {
+                pageViewsEl.textContent = 'Unavailable';
+            }
+        };
+        document.body.appendChild(counterScript);
+    };
+
+    loadVisitorStats();
 </script>
 
 </body>

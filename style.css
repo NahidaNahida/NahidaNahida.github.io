@@ -50,6 +50,27 @@ a:hover{
     font-style: italic;
 }
 
+.pub-badges {
+    display: inline-block;
+    margin-right: 6px;
+    vertical-align: baseline;
+}
+
+.pub-badges .venue,
+.pub-badges .mybold {
+    display: inline-block;
+    padding: 0 6px;
+    border: 1px solid #238f91;
+    border-radius: 3px;
+    background: #2fa7a3;
+    color: #fff;
+    font-size: 0.92em;
+    font-style: normal;
+    font-weight: bold;
+    line-height: 1.25;
+    text-align: center;
+}
+
 h1, p {
     text-align: center;
 }
@@ -88,6 +109,31 @@ ul{
 
 li{
   margin-bottom:8px;
+}
+
+.visitor-stats {
+  margin-top: 6px;
+  font-size: 0.9em;
+  color: #333;
+}
+
+.visitor-stats strong {
+  color: #111;
+}
+
+.visitor-map {
+  display: block;
+  width: fit-content;
+  margin-top: 6px;
+  line-height: 0;
+}
+
+.visitor-map img {
+  display: block;
+  width: 220px;
+  max-width: 100%;
+  height: auto;
+  border: 0;
 }
 
  
