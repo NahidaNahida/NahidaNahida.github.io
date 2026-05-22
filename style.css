@@ -121,8 +121,8 @@ a:hover{
 }
 
 .page-nav a.active {
-  border-color: #9617df;
-  background: #8214c2;
+  border-color: #ac3aee;
+  background: #b858ef;
   color: #fff;
   font-weight: bold;
 }

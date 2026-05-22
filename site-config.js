@@ -17,8 +17,8 @@ window.SITE_CONFIG = {
     visits: {
         intervalMs: 10 * 60 * 1000,
         publishedHost: 'nahidanahida.github.io',
-        cacheKey: 'visitor_stats_cache_v2',
-        lastCountKey: 'visitor_stats_last_count_v2'
+        cacheKey: 'visitor_stats_site_cache_v1',
+        lastCountKey: 'visitor_stats_site_last_count_v1'
     },
     pages: [
         { id: 'home', label: 'Home', href: 'index.html' },

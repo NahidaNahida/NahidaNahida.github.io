@@ -254,7 +254,7 @@
             return;
         }
 
-        pageViewsEl.id = 'vercount_value_page_pv';
+        pageViewsEl.id = 'vercount_value_site_pv';
 
         const counterScript = document.createElement('script');
         counterScript.defer = true;
