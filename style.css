@@ -122,25 +122,19 @@ li{
   font-size: inherit;
 }
 
-.visitor-map {
-  display: block;
-  margin-top: 6px;
-  line-height: 0;
+.visitor-location-summary {
+  margin-top: 4px;
+  font-size: 0.86em;
+  color: gray;
 }
 
-.visitor-map iframe {
-  display: block;
-  width: min(100%, 560px);
-  height: 320px;
-  border: 0;
+.visitor-location-summary ol {
+  margin: 2px 0 0 18px;
+  padding: 0;
 }
 
-.visitor-map img {
-  display: block;
-  width: 320px;
-  max-width: 100%;
-  height: auto;
-  border: 0;
+.visitor-location-summary li {
+  margin-bottom: 0;
 }
 
  

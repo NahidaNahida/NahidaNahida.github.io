@@ -347,9 +347,11 @@ your email.
 
 <div id="visitor-stats" class="visitor-stats">
     Page visits: <strong id="visitor-page-views">Loading...</strong>
-    <div class="visitor-map" title="visitor location map">
-        <iframe id="visitor-location-map" title="Visitor location map" data-src="https://smallcounter.com/vmap/1775478632/" src="about:blank" loading="lazy"></iframe>
-        <img id="visitor-location-map-cache" title="visitor location map" src="https://smallcounter.com/map/view.php?type=180&id=1775478632" alt="Visitor location map">
+    <div class="visitor-location-summary">
+        <span>Top visitor locations:</span>
+        <ol id="visitor-location-list">
+            <li>Collecting data</li>
+        </ol>
     </div>
 </div>
 
@@ -454,17 +456,38 @@ your email.
     const VISIT_INTERVAL_MS = 6 * 60 * 60 * 1000;
     const VISITOR_STATS_CACHE_KEY = 'visitor_stats_cache';
     const VISITOR_STATS_LAST_COUNT_KEY = 'visitor_stats_last_count';
+    const VISITOR_LOCATIONS_CACHE_KEY = 'visitor_locations_cache';
     const isPublishedPage = window.location.hostname === 'nahidanahida.github.io';
 
     const pageViewsEl = document.getElementById('visitor-page-views');
-    const visitorMapFrameEl = document.getElementById('visitor-location-map');
-    const visitorMapCacheEl = document.getElementById('visitor-location-map-cache');
+    const visitorLocationListEl = document.getElementById('visitor-location-list');
+
+    const fallbackVisitorLocations = [];
 
     const setVisitorStats = (data) => {
         if (!data) {
             return;
         }
         pageViewsEl.textContent = data.pageViews ?? data.page_pv ?? '-';
+    };
+
+    const setVisitorLocations = (locations) => {
+        visitorLocationListEl.replaceChildren();
+        const topLocations = locations.slice(0, 5);
+
+        if (!topLocations.length) {
+            const li = document.createElement('li');
+            li.textContent = 'Collecting data';
+            visitorLocationListEl.appendChild(li);
+            return;
+        }
+
+        topLocations.forEach((location) => {
+            const li = document.createElement('li');
+            const city = location.city ? `${location.city}, ` : '';
+            li.textContent = `${city}${location.country}: ${location.visits}`;
+            visitorLocationListEl.appendChild(li);
+        });
     };
 
     const cachedVisitorStats = localStorage.getItem(VISITOR_STATS_CACHE_KEY);
@@ -476,13 +499,16 @@ your email.
         }
     }
 
-    if (isPublishedPage && visitorMapFrameEl) {
-        visitorMapFrameEl.src = visitorMapFrameEl.dataset.src;
-        visitorMapFrameEl.hidden = false;
-        visitorMapCacheEl.hidden = true;
+    const cachedVisitorLocations = localStorage.getItem(VISITOR_LOCATIONS_CACHE_KEY);
+    if (cachedVisitorLocations) {
+        try {
+            setVisitorLocations(JSON.parse(cachedVisitorLocations));
+        } catch (err) {
+            localStorage.removeItem(VISITOR_LOCATIONS_CACHE_KEY);
+            setVisitorLocations(fallbackVisitorLocations);
+        }
     } else {
-        visitorMapFrameEl.hidden = true;
-        visitorMapCacheEl.hidden = false;
+        setVisitorLocations(fallbackVisitorLocations);
     }
 
     const cacheVercountStats = () => {
