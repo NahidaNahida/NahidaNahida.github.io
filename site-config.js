@@ -15,10 +15,16 @@ window.SITE_CONFIG = {
         branch: 'main'
     },
     visits: {
-        intervalMs: 10 * 60 * 1000,
+        apiUrl: '',
+        siteId: 'nahidanahida.github.io',
+        syncIntervalMs: 30 * 1000,
+        countIntervalMs: 10 * 60 * 1000,
+        intervalMs: 2 * 60 * 1000,
         publishedHost: 'nahidanahida.github.io',
-        cacheKey: 'visitor_stats_site_cache_v2',
-        lastCountKey: 'visitor_stats_site_last_count_v2'
+        cacheKey: 'visitor_stats_site_cache_v3',
+        lastCountKey: 'visitor_stats_site_last_count_v3',
+        pendingKey: 'visitor_stats_site_pending_v1',
+        visitorIdKey: 'visitor_stats_site_visitor_id_v1'
     },
     pages: [
         { id: 'home', label: 'Home', href: 'index.html' },

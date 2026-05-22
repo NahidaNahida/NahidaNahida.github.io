@@ -243,9 +243,89 @@
             localStorage.setItem(visits.cacheKey, JSON.stringify({ pageViews: String(pageViews) }));
         };
 
+        const getVisitorId = () => {
+            let visitorId = localStorage.getItem(visits.visitorIdKey);
+            if (!visitorId) {
+                visitorId = crypto.randomUUID ? crypto.randomUUID() : `${Date.now()}-${Math.random()}`;
+                localStorage.setItem(visits.visitorIdKey, visitorId);
+            }
+            return visitorId;
+        };
+
+        const loadBackendVisitorStats = () => {
+            const apiUrl = visits.apiUrl;
+            if (!apiUrl) {
+                return false;
+            }
+
+            const visitorId = getVisitorId();
+            const siteId = visits.siteId || window.location.hostname;
+            const now = Date.now();
+            const lastCountedAt = Number(localStorage.getItem(visits.lastCountKey) || 0);
+            const shouldCountVisit = isPublishedPage && now - lastCountedAt > visits.countIntervalMs;
+
+            const getUrl = new URL(apiUrl);
+            getUrl.searchParams.set('siteId', siteId);
+
+            const fetchVisitCount = (method) => {
+                const requestOptions = {
+                    method,
+                    headers: { 'Content-Type': 'application/json' }
+                };
+                const url = method === 'POST' ? apiUrl : getUrl.toString();
+                if (method === 'POST') {
+                    requestOptions.body = JSON.stringify({ siteId, visitorId });
+                }
+
+                return fetch(url, requestOptions).then((response) => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP ${response.status}`);
+                    }
+                    return response.json();
+                })
+                .then((data) => {
+                    const pageViews = Number(data.pageViews ?? data.visits);
+                    if (Number.isFinite(pageViews)) {
+                        pageViewsEl.textContent = String(pageViews);
+                        cachePageViews(pageViews);
+                    }
+                    return data;
+                });
+            };
+
+            const updateOnly = () => {
+                fetchVisitCount('GET').catch((err) => {
+                    console.error(err);
+                    if (!hasCachedVisitorStats) {
+                        pageViewsEl.textContent = 'Unavailable';
+                    }
+                });
+            };
+
+            if (shouldCountVisit) {
+                localStorage.setItem(visits.lastCountKey, String(now));
+                fetchVisitCount('POST').catch((err) => {
+                    console.error(err);
+                    localStorage.removeItem(visits.lastCountKey);
+                    updateOnly();
+                });
+            } else {
+                updateOnly();
+            }
+
+            window.setInterval(updateOnly, visits.syncIntervalMs);
+            return true;
+        };
+
+        if (loadBackendVisitorStats()) {
+            return;
+        }
+
         const now = Date.now();
         const lastCountedAt = Number(localStorage.getItem(visits.lastCountKey) || 0);
-        const shouldCountVisit = isPublishedPage && now - lastCountedAt > visits.intervalMs;
+        const pendingStartedAt = Number(localStorage.getItem(visits.pendingKey) || 0);
+        const hasPendingCount = pendingStartedAt && now - pendingStartedAt < 30000;
+        const shouldCountVisit = isPublishedPage && !hasPendingCount && now - lastCountedAt > visits.intervalMs;
 
         if (!isPublishedPage) {
             if (!hasCachedVisitorStats) {
@@ -261,6 +341,7 @@
             return;
         }
 
+        localStorage.setItem(visits.pendingKey, String(now));
         localStorage.setItem(visits.lastCountKey, String(now));
 
         pageViewsEl.id = 'vercount_value_site_pv';
@@ -282,11 +363,13 @@
                     if (bestPageViews !== null) {
                         cachePageViews(bestPageViews);
                     }
+                    localStorage.removeItem(visits.pendingKey);
                     clearInterval(cacheTimer);
                 }
             }, 250);
         };
         counterScript.onerror = () => {
+            localStorage.removeItem(visits.pendingKey);
             if (!hasCachedVisitorStats) {
                 pageViewsEl.textContent = 'Unavailable';
             }

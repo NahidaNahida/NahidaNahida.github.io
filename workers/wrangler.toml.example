@@ -1,0 +1,7 @@
+name = "nahidanahida-visit-counter"
+main = "visit-counter.js"
+compatibility_date = "2026-05-22"
+
+kv_namespaces = [
+  { binding = "VISIT_COUNTER", id = "replace_with_cloudflare_kv_namespace_id" }
+]
