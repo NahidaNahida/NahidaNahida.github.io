@@ -1,4 +1,4 @@
-# Yuechen Li's Personal Homepage
+# NahidaNahida's Personal Homepage
 
 This repository hosts the source code for my personal academic homepage:
 
