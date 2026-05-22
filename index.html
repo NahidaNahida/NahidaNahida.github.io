@@ -456,13 +456,15 @@ your email.
     const VISIT_INTERVAL_MS = 6 * 60 * 60 * 1000;
     const VISITOR_STATS_CACHE_KEY = 'visitor_stats_cache';
     const VISITOR_STATS_LAST_COUNT_KEY = 'visitor_stats_last_count';
-    const VISITOR_LOCATIONS_CACHE_KEY = 'visitor_locations_cache';
     const isPublishedPage = window.location.hostname === 'nahidanahida.github.io';
 
     const pageViewsEl = document.getElementById('visitor-page-views');
     const visitorLocationListEl = document.getElementById('visitor-location-list');
 
-    const fallbackVisitorLocations = [];
+    const topVisitorLocations = [
+        // Fill this list with real aggregated data when available.
+        // Format: { country: 'Japan', city: 'Fukuoka', visits: 12 }
+    ];
 
     const setVisitorStats = (data) => {
         if (!data) {
@@ -499,17 +501,7 @@ your email.
         }
     }
 
-    const cachedVisitorLocations = localStorage.getItem(VISITOR_LOCATIONS_CACHE_KEY);
-    if (cachedVisitorLocations) {
-        try {
-            setVisitorLocations(JSON.parse(cachedVisitorLocations));
-        } catch (err) {
-            localStorage.removeItem(VISITOR_LOCATIONS_CACHE_KEY);
-            setVisitorLocations(fallbackVisitorLocations);
-        }
-    } else {
-        setVisitorLocations(fallbackVisitorLocations);
-    }
+    setVisitorLocations(topVisitorLocations);
 
     const cacheVercountStats = () => {
         const pageViews = pageViewsEl.textContent.trim();
