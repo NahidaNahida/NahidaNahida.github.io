@@ -211,7 +211,11 @@
         }
 
         const isPublishedPage = window.location.hostname === visits.publishedHost;
-        const cachedVisitorStats = localStorage.getItem(visits.cacheKey);
+        const cachedVisitorStats =
+            localStorage.getItem(visits.cacheKey) ||
+            localStorage.getItem('visitor_stats_site_cache_v1') ||
+            localStorage.getItem('visitor_stats_cache_v2');
+        const hasCachedVisitorStats = Boolean(cachedVisitorStats);
 
         const setVisitorStats = (data) => {
             if (data) {
@@ -244,15 +248,20 @@
         const shouldCountVisit = isPublishedPage && now - lastCountedAt > visits.intervalMs;
 
         if (!isPublishedPage) {
-            if (!cachedVisitorStats) {
+            if (!hasCachedVisitorStats) {
                 pageViewsEl.textContent = 'No cache';
             }
             return;
         }
 
-        if (!shouldCountVisit && cachedVisitorStats) {
+        if (!shouldCountVisit) {
+            if (!hasCachedVisitorStats) {
+                pageViewsEl.textContent = 'Loading...';
+            }
             return;
         }
+
+        localStorage.setItem(visits.lastCountKey, String(now));
 
         pageViewsEl.id = 'vercount_value_site_pv';
 
@@ -276,13 +285,9 @@
                     clearInterval(cacheTimer);
                 }
             }, 250);
-
-            if (shouldCountVisit) {
-                localStorage.setItem(visits.lastCountKey, String(now));
-            }
         };
         counterScript.onerror = () => {
-            if (!cachedVisitorStats) {
+            if (!hasCachedVisitorStats) {
                 pageViewsEl.textContent = 'Unavailable';
             }
         };
