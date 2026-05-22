@@ -114,23 +114,30 @@ li{
 .visitor-stats {
   margin-top: 6px;
   font-size: 0.9em;
-  color: #333;
+  color: gray;
 }
 
 .visitor-stats strong {
-  color: #111;
+  color: inherit;
+  font-size: inherit;
 }
 
 .visitor-map {
   display: block;
-  width: fit-content;
   margin-top: 6px;
   line-height: 0;
 }
 
+.visitor-map iframe {
+  display: block;
+  width: min(100%, 560px);
+  height: 320px;
+  border: 0;
+}
+
 .visitor-map img {
   display: block;
-  width: 220px;
+  width: 320px;
   max-width: 100%;
   height: auto;
   border: 0;

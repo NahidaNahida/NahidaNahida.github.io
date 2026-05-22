@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Yuechen Li</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=20260522-2">
 
     <!-- icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -85,7 +85,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Yuechen Li</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=20260522-2">
 
     <!--icons-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -348,7 +348,8 @@ your email.
 <div id="visitor-stats" class="visitor-stats">
     Page visits: <strong id="visitor-page-views">Loading...</strong>
     <div class="visitor-map" title="visitor location map">
-        <img id="visitor-location-map" title="visitor location map" src="https://smallcounter.com/map/view.php?type=180&id=1775478632" alt="Visitor location map">
+        <iframe id="visitor-location-map" title="Visitor location map" data-src="https://smallcounter.com/vmap/1775478632/" src="about:blank" loading="lazy"></iframe>
+        <img id="visitor-location-map-cache" title="visitor location map" src="https://smallcounter.com/map/view.php?type=180&id=1775478632" alt="Visitor location map">
     </div>
 </div>
 
@@ -456,6 +457,8 @@ your email.
     const isPublishedPage = window.location.hostname === 'nahidanahida.github.io';
 
     const pageViewsEl = document.getElementById('visitor-page-views');
+    const visitorMapFrameEl = document.getElementById('visitor-location-map');
+    const visitorMapCacheEl = document.getElementById('visitor-location-map-cache');
 
     const setVisitorStats = (data) => {
         if (!data) {
@@ -471,6 +474,15 @@ your email.
         } catch (err) {
             localStorage.removeItem(VISITOR_STATS_CACHE_KEY);
         }
+    }
+
+    if (isPublishedPage && visitorMapFrameEl) {
+        visitorMapFrameEl.src = visitorMapFrameEl.dataset.src;
+        visitorMapFrameEl.hidden = false;
+        visitorMapCacheEl.hidden = true;
+    } else {
+        visitorMapFrameEl.hidden = true;
+        visitorMapCacheEl.hidden = false;
     }
 
     const cacheVercountStats = () => {
