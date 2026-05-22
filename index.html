@@ -347,12 +347,6 @@ your email.
 
 <div id="visitor-stats" class="visitor-stats">
     Page visits: <strong id="visitor-page-views">Loading...</strong>
-    <div class="visitor-location-summary">
-        <span>Top visitor locations:</span>
-        <ol id="visitor-location-list">
-            <li>Collecting data</li>
-        </ol>
-    </div>
 </div>
 
 <script>
@@ -459,37 +453,12 @@ your email.
     const isPublishedPage = window.location.hostname === 'nahidanahida.github.io';
 
     const pageViewsEl = document.getElementById('visitor-page-views');
-    const visitorLocationListEl = document.getElementById('visitor-location-list');
-
-    const topVisitorLocations = [
-        // Fill this list with real aggregated data when available.
-        // Format: { country: 'Japan', city: 'Fukuoka', visits: 12 }
-    ];
 
     const setVisitorStats = (data) => {
         if (!data) {
             return;
         }
         pageViewsEl.textContent = data.pageViews ?? data.page_pv ?? '-';
-    };
-
-    const setVisitorLocations = (locations) => {
-        visitorLocationListEl.replaceChildren();
-        const topLocations = locations.slice(0, 5);
-
-        if (!topLocations.length) {
-            const li = document.createElement('li');
-            li.textContent = 'Collecting data';
-            visitorLocationListEl.appendChild(li);
-            return;
-        }
-
-        topLocations.forEach((location) => {
-            const li = document.createElement('li');
-            const city = location.city ? `${location.city}, ` : '';
-            li.textContent = `${city}${location.country}: ${location.visits}`;
-            visitorLocationListEl.appendChild(li);
-        });
     };
 
     const cachedVisitorStats = localStorage.getItem(VISITOR_STATS_CACHE_KEY);
@@ -500,8 +469,6 @@ your email.
             localStorage.removeItem(VISITOR_STATS_CACHE_KEY);
         }
     }
-
-    setVisitorLocations(topVisitorLocations);
 
     const cacheVercountStats = () => {
         const pageViews = pageViewsEl.textContent.trim();

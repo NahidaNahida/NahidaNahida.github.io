@@ -122,19 +122,4 @@ li{
   font-size: inherit;
 }
 
-.visitor-location-summary {
-  margin-top: 4px;
-  font-size: 0.86em;
-  color: gray;
-}
-
-.visitor-location-summary ol {
-  margin: 2px 0 0 18px;
-  padding: 0;
-}
-
-.visitor-location-summary li {
-  margin-bottom: 0;
-}
-
  
