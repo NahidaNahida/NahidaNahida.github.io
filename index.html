@@ -3,110 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <title>Yuechen Li</title>
-    <link rel="stylesheet" href="style.css?v=20260522-4">
+    <link rel="stylesheet" href="style.css?v=20260522-9">
 
     <!-- icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/academicons/academicons@1.9.1/css/academicons.min.css">
-
-    <style>
-        /* ===== Sidebar styles ===== */
-        #sidebar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 180px;
-            height: 100%;
-            background-color: #f5f5f5;
-            border-right: 1px solid #ccc;
-            padding: 10px;
-            overflow-y: auto;
-            transition: transform 0.3s ease;
-            z-index: 1000;
-        }
-        #sidebar.hidden {
-            transform: translateX(-148px);
-        }
-        #toggle-sidebar {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            padding: 5px 10px;
-            cursor: pointer;
-        }
-        #toc ul {
-            list-style: none;
-            padding-left: 0;
-        }
-        #toc li {
-            margin: 5px 28px;
-        }
-        #toc a {
-            text-decoration: none;
-            color: #333;
-            font-size: 0.9em;
-            transition: color 0.2s ease, font-weight 0.2s ease;
-        }
-        #toc a:hover {
-            color: #2a5db0;
-        }
-        #toc a.active {
-            color: #111;
-            font-weight: bold;
-            text-decoration: underline;
-        }
-
-        /* ===== Main content adjustment ===== */
-        body {
-            margin-left: 180px; /* leave space for sidebar */
-            padding: 28px 36px;
-            font-family: "Palatino Linotype","Book Antiqua",Palatino,serif;
-        }
-
-        /* ===== Footer styles ===== */
-        #last-updated, #view-count {
-            margin-top: 20px;
-            font-size: 0.9em;
-            color: gray;
-        }
-    </style>
 </head>
 
-<body>
+<body data-page="home">
 <div id="main-content">
-<!-- ===== Sidebar / Table of Contents ===== -->
-<div id="sidebar">
-    <button id="toggle-sidebar">☰</button>
-    <nav id="toc">
-        <b>Contents</b>
-        <ul id="toc-list"></ul>
-    </nav>
-</div>
+<div data-site-sidebar></div>
 
-<div class="header">
-
-<h1>Yuechen Li (<span lang="zh">李玥辰</span>)</h1>
-
-<!-- <p>
-Student / Developer
-</p> -->
-
-<p class="icon-links">
-  <a href="https://github.com/NahidaNahida" target="_blank">
-    <i class="fab fa-github"></i> GitHub
-  </a> |
-    <a href="https://scholar.google.com.hk/citations?user=hf8TWEMAAAAJ&hl=zh-CN" target="_blank">
-    <i class="fab fa-google"></i> Google Scholar
-  </a> |
-  <a href="https://orcid.org/0009-0006-5109-3288" target="_blank">
-    <i class="fab fa-orcid"></i> ORCID
-  </a>
-</p>
-<nav class="page-nav" aria-label="Primary">
-    <a href="./" class="active">Home</a>
-    <a href="publications.html">Publications</a>
-</nav>
-</div>
+<div data-site-header></div>
 
 
 Yuechen is a four-year Ph.D. candidate with Beihang University.
@@ -128,29 +36,6 @@ This study systematically investigates the test oracle problem for quantum progr
 and provides a feasible solution for handling curse of dimensionality in quantum software testing.
 </div>
 </div> -->
-
-<h2>News</h2>
-
-<ul>
-<li><b>(2026.5)</b>
-    A systematic literature review <a href="https://dl.acm.org/doi/10.1145/3816147"><i>
-    Quantum Optimization for Software Engineering: A Survey</i></a> has just been accepted by
-    ACM Transactions on Software Engineering and Methodology (TOSEM). This survey comprehensively
-    reviews the methodologies of applying quantum-inspired and quantum optimization algorithms to
-    handle software engineering problems and outlines potential research directions in this emerging area.
-</li>
-
-<li><b>(2026.3)</b>
-    A new study <a href="https://ieeexplore.ieee.org/abstract/document/11421015"><i>
-    A Dynamic Test Oracle for Quantum Programs with Separable Output States</i></a>
-    has been accepted for publication in IEEE Transactions on Software Engineering (TSE).
-    This study systematically investigates the test oracle problem for quantum programs,
-    and provides a feasible solution for handling curse of dimensionality in quantum software testing.
-    One of the empirical insights is that using hypothesis tests and statistical measures as test oracles for quantum
-    software are not reliable, which is sensitive to parameter configurations and associated with inherent limitations (e.g., struggle to handle the curse of dimensionality and observe the phase).
-</li>
-</ul>
-
 
 <h2>Education</h2>
 
@@ -224,179 +109,12 @@ Welcome to have an academic or technical discussion with me via <a href="mailto:
 I welcome academic and technical discussions related to my research interests. Please include your name, affiliation, and the topic you would like to discuss in
 your email.
 
-<!-- ===== Last updated ===== -->
-<div id="last-updated">
-    Last updated: <span id="updated-time">Loading...</span>
-</div>
+<div data-site-footer></div>
 
-<div id="visitor-stats" class="visitor-stats">
-    Page visits: <strong id="visitor-page-views">Loading...</strong>
-</div>
 
-<script>
-    // GitHub repo information
-    const githubUser = 'NahidaNahida';
-    const githubRepo = 'NahidaNahida.github.io';
-    const branch = 'main';
 
-    // Call GitHub API to get the latest commit information for the specified branch
-    fetch(`https://api.github.com/repos/${githubUser}/${githubRepo}/commits/${branch}`)
-        .then(response => response.json())
-        .then(commit => {
-            if (commit && commit.commit && commit.commit.author) {
-                const updatedAt = new Date(commit.commit.author.date);
-                document.getElementById('updated-time').textContent = updatedAt.toLocaleString();
-            } else {
-                document.getElementById('updated-time').textContent = 'No commits yet';
-            }
-        })
-        .catch(err => {
-            console.error(err);
-            document.getElementById('updated-time').textContent = 'Error fetching update time';
-        });
-</script>
-
-<!-- ===== Scripts ===== -->
-<script>
-    // ===== Generate Table of Contents =====
-    const tocList = document.getElementById('toc-list');
-    const tocLinks = [];
-    document.querySelectorAll('h2, h3, h4').forEach((heading) => {
-        const id = heading.textContent.replace(/\s+/g, '_');
-        heading.id = id;
-        const li = document.createElement('li');
-        li.style.marginLeft = heading.tagName === 'H2' ? '0px' :
-                             heading.tagName === 'H3' ? '10px' : '20px';
-        const a = document.createElement('a');
-        a.href = `#${id}`;
-        a.textContent = heading.textContent;
-        tocLinks.push(a);
-        li.appendChild(a);
-        tocList.appendChild(li);
-    });
-
-    const setActiveTocLink = (id) => {
-        tocLinks.forEach((link) => {
-            link.classList.toggle('active', link.getAttribute('href') === `#${id}`);
-        });
-    };
-
-    let clickedTocId = null;
-    let clickedTocTimer = null;
-
-    const updateActiveTocLink = () => {
-        if (clickedTocId) {
-            setActiveTocLink(clickedTocId);
-            return;
-        }
-
-        const headings = Array.from(document.querySelectorAll('h2, h3, h4'));
-        let activeHeading = headings[0];
-        headings.forEach((heading) => {
-            if (heading.getBoundingClientRect().top <= 120) {
-                activeHeading = heading;
-            }
-        });
-        if (activeHeading) {
-            setActiveTocLink(activeHeading.id);
-        }
-    };
-
-    tocLinks.forEach((link) => {
-        link.addEventListener('click', () => {
-            clickedTocId = link.getAttribute('href').slice(1);
-            setActiveTocLink(clickedTocId);
-            clearTimeout(clickedTocTimer);
-            clickedTocTimer = setTimeout(() => {
-                clickedTocId = null;
-            }, 700);
-        });
-    });
-    window.addEventListener('scroll', updateActiveTocLink);
-    updateActiveTocLink();
-
-    // ===== Toggle sidebar visibility =====
-    document.getElementById('toggle-sidebar').addEventListener('click', () => {
-        document.getElementById('sidebar').classList.toggle('hidden');
-    });
-
-    // ===== Online visitor statistics =====
-    const VISIT_INTERVAL_MS = 10 * 60 * 1000;
-    const VISITOR_STATS_CACHE_KEY = 'visitor_stats_cache';
-    const VISITOR_STATS_LAST_COUNT_KEY = 'visitor_stats_last_count';
-    const isPublishedPage = window.location.hostname === 'nahidanahida.github.io';
-
-    const pageViewsEl = document.getElementById('visitor-page-views');
-
-    const setVisitorStats = (data) => {
-        if (!data) {
-            return;
-        }
-        pageViewsEl.textContent = data.pageViews ?? data.page_pv ?? '-';
-    };
-
-    const cachedVisitorStats = localStorage.getItem(VISITOR_STATS_CACHE_KEY);
-    if (cachedVisitorStats) {
-        try {
-            setVisitorStats(JSON.parse(cachedVisitorStats));
-        } catch (err) {
-            localStorage.removeItem(VISITOR_STATS_CACHE_KEY);
-        }
-    }
-
-    const cacheVercountStats = () => {
-        const pageViews = pageViewsEl.textContent.trim();
-        if (!pageViews || pageViews === 'Loading...' || pageViews === 'No cache') {
-            return false;
-        }
-        const data = { pageViews };
-        localStorage.setItem(VISITOR_STATS_CACHE_KEY, JSON.stringify(data));
-        return true;
-    };
-
-    const loadVisitorStats = () => {
-        const now = Date.now();
-        const lastCountedAt = Number(localStorage.getItem(VISITOR_STATS_LAST_COUNT_KEY) || 0);
-        const shouldCountVisit = isPublishedPage && now - lastCountedAt > VISIT_INTERVAL_MS;
-
-        if (!isPublishedPage) {
-            if (!cachedVisitorStats) {
-                pageViewsEl.textContent = 'No cache';
-            }
-            return;
-        }
-
-        if (!shouldCountVisit && cachedVisitorStats) {
-            return;
-        }
-
-        pageViewsEl.id = 'vercount_value_page_pv';
-
-        const counterScript = document.createElement('script');
-        counterScript.defer = true;
-        counterScript.src = 'https://events.vercount.one/js';
-        counterScript.onload = () => {
-            let attempts = 0;
-            const cacheTimer = setInterval(() => {
-                attempts += 1;
-                if (cacheVercountStats() || attempts > 20) {
-                    clearInterval(cacheTimer);
-                }
-            }, 250);
-            if (shouldCountVisit) {
-                localStorage.setItem(VISITOR_STATS_LAST_COUNT_KEY, String(now));
-            }
-        };
-        counterScript.onerror = () => {
-            if (!cachedVisitorStats) {
-                pageViewsEl.textContent = 'Unavailable';
-            }
-        };
-        document.body.appendChild(counterScript);
-    };
-
-    loadVisitorStats();
-</script>
+<script src="site-config.js?v=20260522-8"></script>
+<script src="site.js?v=20260522-8"></script>
 
 </div>
 </body>

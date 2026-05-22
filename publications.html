@@ -3,110 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <title>Publications | Yuechen Li</title>
-    <link rel="stylesheet" href="style.css?v=20260522-4">
+    <link rel="stylesheet" href="style.css?v=20260522-9">
 
     <!-- icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/academicons/academicons@1.9.1/css/academicons.min.css">
-
-    <style>
-        /* ===== Sidebar styles ===== */
-        #sidebar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 180px;
-            height: 100%;
-            background-color: #f5f5f5;
-            border-right: 1px solid #ccc;
-            padding: 10px;
-            overflow-y: auto;
-            transition: transform 0.3s ease;
-            z-index: 1000;
-        }
-        #sidebar.hidden {
-            transform: translateX(-148px);
-        }
-        #toggle-sidebar {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            padding: 5px 10px;
-            cursor: pointer;
-        }
-        #toc ul {
-            list-style: none;
-            padding-left: 0;
-        }
-        #toc li {
-            margin: 5px 28px;
-        }
-        #toc a {
-            text-decoration: none;
-            color: #333;
-            font-size: 0.9em;
-            transition: color 0.2s ease, font-weight 0.2s ease;
-        }
-        #toc a:hover {
-            color: #2a5db0;
-        }
-        #toc a.active {
-            color: #111;
-            font-weight: bold;
-            text-decoration: underline;
-        }
-
-        /* ===== Main content adjustment ===== */
-        body {
-            margin-left: 180px; /* leave space for sidebar */
-            padding: 28px 36px;
-            font-family: "Palatino Linotype","Book Antiqua",Palatino,serif;
-        }
-
-        /* ===== Footer styles ===== */
-        #last-updated, #view-count {
-            margin-top: 20px;
-            font-size: 0.9em;
-            color: gray;
-        }
-    </style>
 </head>
 
-<body>
+<body data-page="publications">
 <div id="main-content">
-<!-- ===== Sidebar / Table of Contents ===== -->
-<div id="sidebar">
-    <button id="toggle-sidebar">☰</button>
-    <nav id="toc">
-        <b>Contents</b>
-        <ul id="toc-list"></ul>
-    </nav>
-</div>
+<div data-site-sidebar></div>
 
-<div class="header">
-
-<h1>Yuechen Li (<span lang="zh">李玥辰</span>)</h1>
-
-<!-- <p>
-Student / Developer
-</p> -->
-
-<p class="icon-links">
-  <a href="https://github.com/NahidaNahida" target="_blank">
-    <i class="fab fa-github"></i> GitHub
-  </a> |
-    <a href="https://scholar.google.com.hk/citations?user=hf8TWEMAAAAJ&hl=zh-CN" target="_blank">
-    <i class="fab fa-google"></i> Google Scholar
-  </a> |
-  <a href="https://orcid.org/0009-0006-5109-3288" target="_blank">
-    <i class="fab fa-orcid"></i> ORCID
-  </a>
-</p>
-<nav class="page-nav" aria-label="Primary">
-    <a href="./">Home</a>
-    <a href="publications.html" class="active">Publications</a>
-</nav>
-</div>
+<div data-site-header></div>
 
 
 <h2>
@@ -119,7 +27,7 @@ Student / Developer
 Yuechen's research covers multiple phases or activities of the quantum software development lifecycle.
 The paper types incorporate methodological proposals, empirical studies, literature reviews, and tooling constructions.
 
-<ul>
+<ul class="content-list">
     <li>
         <span class="pub-badges"><span class="venue">TOSEM (CCF-A)</span></span>Man Zhang, <b>Yuechen Li</b>, Tao Yue, Kai-Yuan Cai.
         <i>Quantum Optimization for Software Engineering: A Survey</i>[J].
@@ -208,70 +116,13 @@ The paper types incorporate methodological proposals, empirical studies, literat
     </li>
 </ul>
 
-<!-- ===== Scripts ===== -->
-<script>
-    // ===== Generate Table of Contents =====
-    const tocList = document.getElementById('toc-list');
-    const tocLinks = [];
-    document.querySelectorAll('h2, h3, h4').forEach((heading) => {
-        const id = heading.textContent.replace(/\s+/g, '_');
-        heading.id = id;
-        const li = document.createElement('li');
-        li.style.marginLeft = heading.tagName === 'H2' ? '0px' :
-                             heading.tagName === 'H3' ? '10px' : '20px';
-        const a = document.createElement('a');
-        a.href = `#${id}`;
-        a.textContent = heading.textContent;
-        tocLinks.push(a);
-        li.appendChild(a);
-        tocList.appendChild(li);
-    });
+<div data-site-footer></div>
 
-    const setActiveTocLink = (id) => {
-        tocLinks.forEach((link) => {
-            link.classList.toggle('active', link.getAttribute('href') === `#${id}`);
-        });
-    };
 
-    let clickedTocId = null;
-    let clickedTocTimer = null;
 
-    const updateActiveTocLink = () => {
-        if (clickedTocId) {
-            setActiveTocLink(clickedTocId);
-            return;
-        }
 
-        const headings = Array.from(document.querySelectorAll('h2, h3, h4'));
-        let activeHeading = headings[0];
-        headings.forEach((heading) => {
-            if (heading.getBoundingClientRect().top <= 120) {
-                activeHeading = heading;
-            }
-        });
-        if (activeHeading) {
-            setActiveTocLink(activeHeading.id);
-        }
-    };
-
-    tocLinks.forEach((link) => {
-        link.addEventListener('click', () => {
-            clickedTocId = link.getAttribute('href').slice(1);
-            setActiveTocLink(clickedTocId);
-            clearTimeout(clickedTocTimer);
-            clickedTocTimer = setTimeout(() => {
-                clickedTocId = null;
-            }, 700);
-        });
-    });
-    window.addEventListener('scroll', updateActiveTocLink);
-    updateActiveTocLink();
-
-    // ===== Toggle sidebar visibility =====
-    document.getElementById('toggle-sidebar').addEventListener('click', () => {
-        document.getElementById('sidebar').classList.toggle('hidden');
-    });
-</script>
+<script src="site-config.js?v=20260522-8"></script>
+<script src="site.js?v=20260522-8"></script>
 
 </div>
 </body>
