@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Yuechen Li</title>
-    <link rel="stylesheet" href="style.css?v=20260522-2">
+    <link rel="stylesheet" href="style.css?v=20260522-4">
 
     <!-- icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -15,7 +15,7 @@
             position: fixed;
             top: 0;
             left: 0;
-            width: 200px;
+            width: 180px;
             height: 100%;
             background-color: #f5f5f5;
             border-right: 1px solid #ccc;
@@ -25,7 +25,7 @@
             z-index: 1000;
         }
         #sidebar.hidden {
-            transform: translateX(-168px);
+            transform: translateX(-148px);
         }
         #toggle-sidebar {
             position: absolute;
@@ -39,7 +39,7 @@
             padding-left: 0;
         }
         #toc li {
-            margin: 5px 40px;
+            margin: 5px 28px;
         }
         #toc a {
             text-decoration: none;
@@ -58,9 +58,9 @@
 
         /* ===== Main content adjustment ===== */
         body {
-            margin-left: 200px; /* leave space for sidebar */
-            padding: 20px;
-            font-family: Arial, sans-serif;
+            margin-left: 180px; /* leave space for sidebar */
+            padding: 28px 36px;
+            font-family: "Palatino Linotype","Book Antiqua",Palatino,serif;
         }
 
         /* ===== Footer styles ===== */
@@ -82,17 +82,6 @@
         <ul id="toc-list"></ul>
     </nav>
 </div>
-<head>
-    <meta charset="UTF-8">
-    <title>Yuechen Li</title>
-    <link rel="stylesheet" href="style.css?v=20260522-2">
-
-    <!--icons-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/academicons/academicons@1.9.1/css/academicons.min.css">
-</head>
-
-<body>
 
 <div class="header">
 
@@ -102,7 +91,6 @@
 Student / Developer
 </p> -->
 
- 
 <p class="icon-links">
   <a href="https://github.com/NahidaNahida" target="_blank">
     <i class="fab fa-github"></i> GitHub
@@ -114,13 +102,17 @@ Student / Developer
     <i class="fab fa-orcid"></i> ORCID
   </a>
 </p>
+<nav class="page-nav" aria-label="Primary">
+    <a href="index.html" class="active">Home</a>
+    <a href="publications.html">Publications</a>
+</nav>
 </div>
 
 
-Yuechen is a four-year Ph.D. candidate with Beihang University. 
-His interests include both theoretical and empirical research on 
+Yuechen is a four-year Ph.D. candidate with Beihang University.
+His interests include both theoretical and empirical research on
 foundations of quantum software engineering (QSE), and
-applications of quantum information theory /quantum computing. 
+applications of quantum information theory /quantum computing.
 The current studies during his Ph.D. program have a focus on quantum software testing.
 <br>
 <br>
@@ -130,7 +122,7 @@ The current studies during his Ph.D. program have a focus on quantum software te
 <span style="font-size:25px; font-weight:bold;">Bulletin</span><br>
 
 (2026.3) A new study led by Yuechen, <a href="https://ieeexplore.ieee.org/abstract/document/11421015"><i>
-A Dynamic Test Oracle for Quantum Programs with Separable Output States</i></a>, 
+A Dynamic Test Oracle for Quantum Programs with Separable Output States</i></a>,
 has been accepted for publication in IEEE Transactions on Software Engineering (TSE).
 This study systematically investigates the test oracle problem for quantum programs,
 and provides a feasible solution for handling curse of dimensionality in quantum software testing.
@@ -140,22 +132,22 @@ and provides a feasible solution for handling curse of dimensionality in quantum
 <h2>News</h2>
 
 <ul>
-<li><b>(2026.5)</b> 
+<li><b>(2026.5)</b>
     A systematic literature review <a href="https://dl.acm.org/doi/10.1145/3816147"><i>
-    Quantum Optimization for Software Engineering: A Survey</i></a> has just been accepted by 
-    ACM Transactions on Software Engineering and Methodology (TOSEM). This survey comprehensively 
-    reviews the methodologies of applying quantum-inspired and quantum optimization algorithms to 
+    Quantum Optimization for Software Engineering: A Survey</i></a> has just been accepted by
+    ACM Transactions on Software Engineering and Methodology (TOSEM). This survey comprehensively
+    reviews the methodologies of applying quantum-inspired and quantum optimization algorithms to
     handle software engineering problems and outlines potential research directions in this emerging area.
 </li>
 
-<li><b>(2026.3)</b> 
+<li><b>(2026.3)</b>
     A new study <a href="https://ieeexplore.ieee.org/abstract/document/11421015"><i>
-    A Dynamic Test Oracle for Quantum Programs with Separable Output States</i></a> 
+    A Dynamic Test Oracle for Quantum Programs with Separable Output States</i></a>
     has been accepted for publication in IEEE Transactions on Software Engineering (TSE).
     This study systematically investigates the test oracle problem for quantum programs,
-    and provides a feasible solution for handling curse of dimensionality in quantum software testing. 
+    and provides a feasible solution for handling curse of dimensionality in quantum software testing.
     One of the empirical insights is that using hypothesis tests and statistical measures as test oracles for quantum
-    software are not reliable, which is sensitive to parameter configurations and associated with inherent limitations (e.g., struggle to handle the curse of dimensionality and observe the phase).  
+    software are not reliable, which is sensitive to parameter configurations and associated with inherent limitations (e.g., struggle to handle the curse of dimensionality and observe the phase).
 </li>
 </ul>
 
@@ -164,117 +156,17 @@ and provides a feasible solution for handling curse of dimensionality in quantum
 
 <ul>
 <li><b>Ph.D.</b> (2022.9-Now)
-    <br> 
+    <br>
     School of Automation Science and Electrical Engineering, Beihang University, Beijing, China.
 </li>
-<li><b>Joint Ph.D. student program</b> (2025.10-2026.9) 
-    <br> 
+<li><b>Joint Ph.D. student program</b> (2025.10-2026.9)
+    <br>
     Faculty of Information Science and Electrical Engineering, Kyushu University, Fukuoka, Japan.
 </li>
 <li><b>B.Eng.</b> (2018.9-2022.6)
     <br>
     School of Automation Science and Electrical Engineering, Beihang University, Beijing, China.
 </li>
-</ul>
-
-
-<h2>
-    Paper (Selective)
-</h2>
-
-<h3>
-    Quantum Software Engineering
-</h3>
-Yuechen's research covers multiple phases or activities of the quantum software development lifecycle. 
-The paper types incorporate methodological proposals, empirical studies, literature reviews, and tooling constructions.
-
-<ul>
-    <li>
-        <span class="pub-badges"><span class="venue">TOSEM (CCF-A)</span></span>Man Zhang, <b>Yuechen Li</b>, Tao Yue, Kai-Yuan Cai.
-        <i>Quantum Optimization for Software Engineering: A Survey</i>[J]. 
-        ACM Transactions on Software Engineering and Methodology, 2026, just accepted.
-        <a href="https://dl.acm.org/doi/10.1145/3816147">[Paper]</a>
-        <a href="https://github.com/WSE-Lab/QuantumOpt4SE">[Artifact]</a>
-    </li>
-
-    <li>
-        <span class="pub-badges"><span class="venue">TSE (CCF-A)</span></span><b>Yuechen Li</b>, Kai-Yuan Cai, Beibei Yin.
-        <i>A Dynamic Test Oracle for Quantum Programs with Separable Output States</i>[J].
-        IEEE Transactions on Software Engineering, 2026, 25(4): 1568-1591. 
-        <a href="https://ieeexplore.ieee.org/abstract/document/11421015">[Paper]</a>
-        <a href="https://github.com/NahidaNahida/doss_repo">[Artifact]</a>
-    </li>
-    
-    <li>
-        <span class="pub-badges"><span class="venue">arXiv</span></span><b>Yuechen Li</b>, Minqi Shao, Jianjun Zhao, Qichen Wang.
-        <i>A Methodological Analysis of Empirical Studies in Quantum Software Testing</i>[J]. 
-        arXiv preprint arXiv:2601.08367, 2026. 
-        <a href="https://arxiv.org/pdf/2601.08367">[Paper]</a>
-        <a href="https://github.com/NahidaNahida/QST-empirical-study">[Artifact]</a>
-    </li>
-
-    <li>
-        <span class="pub-badges"><span class="venue">arXiv</span></span>Zenghui Zhou*, <b>Yuechen Li</b>*, Yi Cai, Jinlong Wen, Xiaohan Yu, Zheng Zheng, Beibei Yin.
-        <i>Code Comments for Quantum Software Development Kits: An Empirical Study on Qiskit</i>[J].
-        arXiv preprint arXiv:2512.00766, 2025.
-        (* <i>Equal contribution</i>)
-        <a href="https://arxiv.org/pdf/2512.00766">[Paper]</a>
-        <a href="https://figshare.com/articles/dataset/Code_Comments_for_Quantum_Software_Development_Kits_An_Empirical_Study_on_Qiskit/30085657/1">[Artifact]</a>
-    </li>
-
-    <li>
-        <span class="pub-badges"><span class="venue">arXiv</span></span>Man Zhang, <b>Yuechen Li</b>, Tao Yue, Kai-Yuan Cai.
-        <i>Empirical Studies on Quantum Optimization for Software Engineering: A Systematic Analysis</i>[J]. 
-        arXiv preprint arXiv:2510.27113, 2025.
-        <a href="https://arxiv.org/pdf/2510.27113">[Paper]</a>
-        <a href="https://github.com/WSE-Lab/QuantumOpt4SE-EmpiricalStudies">[Artifact]</a>
-    </li>
-    
-    <li>
-        <span class="pub-badges"><span class="venue">TQE (JCR-Q1)</span></span>Linzhi Huang, Hanyu Pei, <b>Yuechen Li</b>, Beibei Yin, Kai-Yuan Cai.
-        <i>A Dynamic Testing Strategy with Incremental Learning Model for Quantum Programs</i>[J]
-        IEEE Transactions on Quantum Engineering, 2025, 7: 1-27.
-        <a href="https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=11223239">[Paper]</a>
-        <a href="https://github.com/pathuang1112/QDT_IL">[Artifact]</a>
-    </li>
-    
-    <li>
-        <span class="pub-badges"><span class="venue">TOSEM (CCF-A) [RCR report]</span></span><b>Yuechen Li</b>, Kai-Yuan Cai, Beibei Yin.
-        <i>Preparation and Utilization of Mixed States for Testing Quantum Programs—RCR Report</i>[J].
-        ACM Transactions on Software Engineering and Methodology, 2025, just accepted. 
-        <a href="https://dl.acm.org/doi/epdf/10.1145/3786776">[Paper]</a>
-        <a href="https://github.com/NahidaNahida/mstcs">[Artifact]</a> 
-    </li>
-
-    <li>
-        <span class="pub-badges"><span class="venue">QRS (CCF-C)</span></span>Xiaohan Yu, <b>Yuechen Li</b>, Jinlong Wen, Kai-Yuan Cai, Beibei Yin.
-        <i>QuAInth: A Code Comment Approach for Application-Oriented Quantum Programs via N-Version LLMs</i>[C]
-        //2025 25th International Conference on Software Quality, Reliability and Security (QRS). 2025: 13-24.
-        <a href="https://ieeexplore.ieee.org/abstract/document/11173486">[Paper]</a>
-        <a href="https://github.com/dawn9999999/QuAInth">[Artifact]</a>
-    </li>
-
-    <li>
-        <span class="pub-badges"><span class="venue">TOSEM (CCF-A)</span></span><b>Yuechen Li</b>, Kai-Yuan Cai, Beibei Yin.
-        <i>Preparation and Utilization of Mixed States for Testing Quantum Programs</i>[J].
-        ACM Transactions on Software Engineering and Methodology, 2025, 34(8): 1-44. 
-        <a href="https://dl.acm.org/doi/pdf/10.1145/3736757">[Paper]</a>
-        <a href="https://zenodo.org/records/15462299">[Artifact]</a>
-    </li>
-    
-    <li>
-        <span class="pub-badges"><span class="venue">QRS (CCF-C)</span></span>Linzhi Huang, Hanyu Pei, <b>Yuechen Li</b>, Beibei Yin, Kai-Yuan Cai.
-        <i>A Strategy of Dynamic Random Testing with Hybrid Distance Metrics for Quantum Programs</i>[C]
-        //2024 IEEE 24th International Conference on Software Quality, Reliability and Security (QRS). 2024: 1-12.
-        <a href="https://ieeexplore.ieee.org/abstract/document/10684628">[Paper]</a>
-    </li>
-
-    <li>
-        <span class="pub-badges"><span class="venue">TOSEM (CCF-A)</span></span><b>Yuechen Li</b>, Hanyu Pei, Linzhi Huang, Beibei Yin, Kai-Yuan Cai.
-        <i>Automatic Repair of Quantum Programs via Unitary Operation</i>[J]. 
-        ACM Transactions on Software Engineering and Methodology, 2024, 33(6): 1-43. 
-        <a href="https://dl.acm.org/doi/pdf/10.1145/3664604">[Paper]</a>
-    </li>
 </ul>
 
 
@@ -285,37 +177,37 @@ The paper types incorporate methodological proposals, empirical studies, literat
     Empirical Software Engineering
 </li>
 <li><b>2025</b>:
-    IEEE Transactions on Software Engineering, 
+    IEEE Transactions on Software Engineering,
     ACM Transactions on Software Engineering and Methodology,
-    Empirical Software Engineering, 
+    Empirical Software Engineering,
     Knowledge-Based System
 </li>
 <li><b>2024</b>:
     IEEE Software
-</li> 
+</li>
 </ul>
 
 <h3>Talk</h3>
 <ul>
     <li>
-        <b>Yuechen Li</b>. <i>Exploring Quantum Optimization for Software Engineering</i>. 
-        1st Workshop on Quantum Optimization Algorithms and Applications 
-        (co-located with 2025 IEEE Congress on Evolutionary Computation), 
+        <b>Yuechen Li</b>. <i>Exploring Quantum Optimization for Software Engineering</i>.
+        1st Workshop on Quantum Optimization Algorithms and Applications
+        (co-located with 2025 IEEE Congress on Evolutionary Computation),
         June 2025, Hangzhou, China. (<span class="mybold">Lightning talk</span>)
         <a href="docs/talks/Q-OptAA2025_QOpt4CSE_YuechenLi.pdf">[Slides]</a>
     </li>
 </ul>
- 
-<h2> 
-    Funding 
+
+<h2>
+    Funding
 </h2>
 <ul>
-<li>    
+<li>
     Visiting Ph.D. student program, China Scholarship Council (CSC), China (2025.10-2026.9)
 </li>
 </ul>
 
-<h2>Award (Selective)</h2> 
+<h2>Award (Selective)</h2>
 <ul>
 <li>
     Outstanding graduate of regular higher education institutions in Beijing (<span lang="zh">北京市普通高等学校优秀毕业生</span>, 2022.7)
@@ -326,8 +218,8 @@ The paper types incorporate methodological proposals, empirical studies, literat
 </ul>
 
 <h2>Contact</h2>
- 
-Welcome to have an academic or technical discussion with me via <a href="mailto:liyuechen@buaa.edu.cn">liyuechen@buaa.edu.cn</a> &#x1F60A;. <br> 
+
+Welcome to have an academic or technical discussion with me via <a href="mailto:liyuechen@buaa.edu.cn">liyuechen@buaa.edu.cn</a> &#x1F60A;. <br>
 
 I welcome academic and technical discussions related to my research interests. Please include your name, affiliation, and the topic you would like to discuss in
 your email.
@@ -363,12 +255,6 @@ your email.
             document.getElementById('updated-time').textContent = 'Error fetching update time';
         });
 </script>
-
-<!-- ===== Page view count ===== -->
-<!-- <div id="view-count">
-    This page has been viewed <span id="views">0</span> times.
-</div>
-</div> -->
 
 <!-- ===== Scripts ===== -->
 <script>
@@ -433,10 +319,6 @@ your email.
     document.getElementById('toggle-sidebar').addEventListener('click', () => {
         document.getElementById('sidebar').classList.toggle('hidden');
     });
-
-    // ===== Display last updated timestamp =====
-    const now = new Date();
-    document.getElementById('updated-time').textContent = now.toLocaleString();
 
     // ===== Online visitor statistics =====
     const VISIT_INTERVAL_MS = 6 * 60 * 60 * 1000;
@@ -516,5 +398,6 @@ your email.
     loadVisitorStats();
 </script>
 
+</div>
 </body>
 </html>

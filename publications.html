@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Publications | Yuechen Li</title>
+    <link rel="stylesheet" href="style.css?v=20260522-4">
+
+    <!-- icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/academicons/academicons@1.9.1/css/academicons.min.css">
+
+    <style>
+        /* ===== Sidebar styles ===== */
+        #sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 180px;
+            height: 100%;
+            background-color: #f5f5f5;
+            border-right: 1px solid #ccc;
+            padding: 10px;
+            overflow-y: auto;
+            transition: transform 0.3s ease;
+            z-index: 1000;
+        }
+        #sidebar.hidden {
+            transform: translateX(-148px);
+        }
+        #toggle-sidebar {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+        #toc ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        #toc li {
+            margin: 5px 28px;
+        }
+        #toc a {
+            text-decoration: none;
+            color: #333;
+            font-size: 0.9em;
+            transition: color 0.2s ease, font-weight 0.2s ease;
+        }
+        #toc a:hover {
+            color: #2a5db0;
+        }
+        #toc a.active {
+            color: #111;
+            font-weight: bold;
+            text-decoration: underline;
+        }
+
+        /* ===== Main content adjustment ===== */
+        body {
+            margin-left: 180px; /* leave space for sidebar */
+            padding: 28px 36px;
+            font-family: "Palatino Linotype","Book Antiqua",Palatino,serif;
+        }
+
+        /* ===== Footer styles ===== */
+        #last-updated, #view-count {
+            margin-top: 20px;
+            font-size: 0.9em;
+            color: gray;
+        }
+    </style>
+</head>
+
+<body>
+<div id="main-content">
+<!-- ===== Sidebar / Table of Contents ===== -->
+<div id="sidebar">
+    <button id="toggle-sidebar">☰</button>
+    <nav id="toc">
+        <b>Contents</b>
+        <ul id="toc-list"></ul>
+    </nav>
+</div>
+
+<div class="header">
+
+<h1>Yuechen Li (<span lang="zh">李玥辰</span>)</h1>
+
+<!-- <p>
+Student / Developer
+</p> -->
+
+<p class="icon-links">
+  <a href="https://github.com/NahidaNahida" target="_blank">
+    <i class="fab fa-github"></i> GitHub
+  </a> |
+    <a href="https://scholar.google.com.hk/citations?user=hf8TWEMAAAAJ&hl=zh-CN" target="_blank">
+    <i class="fab fa-google"></i> Google Scholar
+  </a> |
+  <a href="https://orcid.org/0009-0006-5109-3288" target="_blank">
+    <i class="fab fa-orcid"></i> ORCID
+  </a>
+</p>
+<nav class="page-nav" aria-label="Primary">
+    <a href="index.html">Home</a>
+    <a href="publications.html" class="active">Publications</a>
+</nav>
+</div>
+
+
+<h2>
+    Publications (Selective)
+</h2>
+
+<h3>
+    Quantum Software Engineering
+</h3>
+Yuechen's research covers multiple phases or activities of the quantum software development lifecycle.
+The paper types incorporate methodological proposals, empirical studies, literature reviews, and tooling constructions.
+
+<ul>
+    <li>
+        <span class="pub-badges"><span class="venue">TOSEM (CCF-A)</span></span>Man Zhang, <b>Yuechen Li</b>, Tao Yue, Kai-Yuan Cai.
+        <i>Quantum Optimization for Software Engineering: A Survey</i>[J].
+        ACM Transactions on Software Engineering and Methodology, 2026, just accepted.
+        <a href="https://dl.acm.org/doi/10.1145/3816147">[Paper]</a>
+        <a href="https://github.com/WSE-Lab/QuantumOpt4SE">[Artifact]</a>
+    </li>
+
+    <li>
+        <span class="pub-badges"><span class="venue">TSE (CCF-A)</span></span><b>Yuechen Li</b>, Kai-Yuan Cai, Beibei Yin.
+        <i>A Dynamic Test Oracle for Quantum Programs with Separable Output States</i>[J].
+        IEEE Transactions on Software Engineering, 2026, 25(4): 1568-1591.
+        <a href="https://ieeexplore.ieee.org/abstract/document/11421015">[Paper]</a>
+        <a href="https://github.com/NahidaNahida/doss_repo">[Artifact]</a>
+    </li>
+
+    <li>
+        <span class="pub-badges"><span class="venue">arXiv</span></span><b>Yuechen Li</b>, Minqi Shao, Jianjun Zhao, Qichen Wang.
+        <i>A Methodological Analysis of Empirical Studies in Quantum Software Testing</i>[J].
+        arXiv preprint arXiv:2601.08367, 2026.
+        <a href="https://arxiv.org/pdf/2601.08367">[Paper]</a>
+        <a href="https://github.com/NahidaNahida/QST-empirical-study">[Artifact]</a>
+    </li>
+
+    <li>
+        <span class="pub-badges"><span class="venue">arXiv</span></span>Zenghui Zhou*, <b>Yuechen Li</b>*, Yi Cai, Jinlong Wen, Xiaohan Yu, Zheng Zheng, Beibei Yin.
+        <i>Code Comments for Quantum Software Development Kits: An Empirical Study on Qiskit</i>[J].
+        arXiv preprint arXiv:2512.00766, 2025.
+        (* <i>Equal contribution</i>)
+        <a href="https://arxiv.org/pdf/2512.00766">[Paper]</a>
+        <a href="https://figshare.com/articles/dataset/Code_Comments_for_Quantum_Software_Development_Kits_An_Empirical_Study_on_Qiskit/30085657/1">[Artifact]</a>
+    </li>
+
+    <li>
+        <span class="pub-badges"><span class="venue">arXiv</span></span>Man Zhang, <b>Yuechen Li</b>, Tao Yue, Kai-Yuan Cai.
+        <i>Empirical Studies on Quantum Optimization for Software Engineering: A Systematic Analysis</i>[J].
+        arXiv preprint arXiv:2510.27113, 2025.
+        <a href="https://arxiv.org/pdf/2510.27113">[Paper]</a>
+        <a href="https://github.com/WSE-Lab/QuantumOpt4SE-EmpiricalStudies">[Artifact]</a>
+    </li>
+
+    <li>
+        <span class="pub-badges"><span class="venue">TQE (JCR-Q1)</span></span>Linzhi Huang, Hanyu Pei, <b>Yuechen Li</b>, Beibei Yin, Kai-Yuan Cai.
+        <i>A Dynamic Testing Strategy with Incremental Learning Model for Quantum Programs</i>[J]
+        IEEE Transactions on Quantum Engineering, 2025, 7: 1-27.
+        <a href="https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=11223239">[Paper]</a>
+        <a href="https://github.com/pathuang1112/QDT_IL">[Artifact]</a>
+    </li>
+
+    <li>
+        <span class="pub-badges"><span class="venue">TOSEM (CCF-A) [RCR report]</span></span><b>Yuechen Li</b>, Kai-Yuan Cai, Beibei Yin.
+        <i>Preparation and Utilization of Mixed States for Testing Quantum Programs—RCR Report</i>[J].
+        ACM Transactions on Software Engineering and Methodology, 2025, just accepted.
+        <a href="https://dl.acm.org/doi/epdf/10.1145/3786776">[Paper]</a>
+        <a href="https://github.com/NahidaNahida/mstcs">[Artifact]</a>
+    </li>
+
+    <li>
+        <span class="pub-badges"><span class="venue">QRS (CCF-C)</span></span>Xiaohan Yu, <b>Yuechen Li</b>, Jinlong Wen, Kai-Yuan Cai, Beibei Yin.
+        <i>QuAInth: A Code Comment Approach for Application-Oriented Quantum Programs via N-Version LLMs</i>[C]
+        //2025 25th International Conference on Software Quality, Reliability and Security (QRS). 2025: 13-24.
+        <a href="https://ieeexplore.ieee.org/abstract/document/11173486">[Paper]</a>
+        <a href="https://github.com/dawn9999999/QuAInth">[Artifact]</a>
+    </li>
+
+    <li>
+        <span class="pub-badges"><span class="venue">TOSEM (CCF-A)</span></span><b>Yuechen Li</b>, Kai-Yuan Cai, Beibei Yin.
+        <i>Preparation and Utilization of Mixed States for Testing Quantum Programs</i>[J].
+        ACM Transactions on Software Engineering and Methodology, 2025, 34(8): 1-44.
+        <a href="https://dl.acm.org/doi/pdf/10.1145/3736757">[Paper]</a>
+        <a href="https://zenodo.org/records/15462299">[Artifact]</a>
+    </li>
+
+    <li>
+        <span class="pub-badges"><span class="venue">QRS (CCF-C)</span></span>Linzhi Huang, Hanyu Pei, <b>Yuechen Li</b>, Beibei Yin, Kai-Yuan Cai.
+        <i>A Strategy of Dynamic Random Testing with Hybrid Distance Metrics for Quantum Programs</i>[C]
+        //2024 IEEE 24th International Conference on Software Quality, Reliability and Security (QRS). 2024: 1-12.
+        <a href="https://ieeexplore.ieee.org/abstract/document/10684628">[Paper]</a>
+    </li>
+
+    <li>
+        <span class="pub-badges"><span class="venue">TOSEM (CCF-A)</span></span><b>Yuechen Li</b>, Hanyu Pei, Linzhi Huang, Beibei Yin, Kai-Yuan Cai.
+        <i>Automatic Repair of Quantum Programs via Unitary Operation</i>[J].
+        ACM Transactions on Software Engineering and Methodology, 2024, 33(6): 1-43.
+        <a href="https://dl.acm.org/doi/pdf/10.1145/3664604">[Paper]</a>
+    </li>
+</ul>
+
+<!-- ===== Scripts ===== -->
+<script>
+    // ===== Generate Table of Contents =====
+    const tocList = document.getElementById('toc-list');
+    const tocLinks = [];
+    document.querySelectorAll('h2, h3, h4').forEach((heading) => {
+        const id = heading.textContent.replace(/\s+/g, '_');
+        heading.id = id;
+        const li = document.createElement('li');
+        li.style.marginLeft = heading.tagName === 'H2' ? '0px' :
+                             heading.tagName === 'H3' ? '10px' : '20px';
+        const a = document.createElement('a');
+        a.href = `#${id}`;
+        a.textContent = heading.textContent;
+        tocLinks.push(a);
+        li.appendChild(a);
+        tocList.appendChild(li);
+    });
+
+    const setActiveTocLink = (id) => {
+        tocLinks.forEach((link) => {
+            link.classList.toggle('active', link.getAttribute('href') === `#${id}`);
+        });
+    };
+
+    let clickedTocId = null;
+    let clickedTocTimer = null;
+
+    const updateActiveTocLink = () => {
+        if (clickedTocId) {
+            setActiveTocLink(clickedTocId);
+            return;
+        }
+
+        const headings = Array.from(document.querySelectorAll('h2, h3, h4'));
+        let activeHeading = headings[0];
+        headings.forEach((heading) => {
+            if (heading.getBoundingClientRect().top <= 120) {
+                activeHeading = heading;
+            }
+        });
+        if (activeHeading) {
+            setActiveTocLink(activeHeading.id);
+        }
+    };
+
+    tocLinks.forEach((link) => {
+        link.addEventListener('click', () => {
+            clickedTocId = link.getAttribute('href').slice(1);
+            setActiveTocLink(clickedTocId);
+            clearTimeout(clickedTocTimer);
+            clickedTocTimer = setTimeout(() => {
+                clickedTocId = null;
+            }, 700);
+        });
+    });
+    window.addEventListener('scroll', updateActiveTocLink);
+    updateActiveTocLink();
+
+    // ===== Toggle sidebar visibility =====
+    document.getElementById('toggle-sidebar').addEventListener('click', () => {
+        document.getElementById('sidebar').classList.toggle('hidden');
+    });
+</script>
+
+</div>
+</body>
+</html>
