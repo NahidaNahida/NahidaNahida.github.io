@@ -71,7 +71,7 @@
         const currentPageId = getCurrentPageId();
         const homeOnlyVisitorStats = currentPageId === 'home' ? `
             <div id="visitor-stats" class="visitor-stats">
-                Page visits: <span id="visitor-page-views">Loading...</span>
+                Visits:
             </div>
             <div id="visitor-map" class="visitor-map" hidden></div>
         ` : '';
@@ -232,7 +232,25 @@
     const loadVisitorStats = () => {
         const pageViewsEl = document.getElementById('visitor-page-views');
         const visits = config.visits;
-        if (!pageViewsEl || !visits) {
+        if (!visits) {
+            return;
+        }
+        if (!pageViewsEl) {
+            const mapEl = document.getElementById('visitor-map');
+            if (!mapEl || !visits.clustrmapsScriptUrl || mapEl.dataset.initialized === 'true') {
+                return;
+            }
+
+            mapEl.hidden = false;
+            mapEl.dataset.initialized = 'true';
+
+            const script = document.createElement('script');
+            script.type = 'text/javascript';
+            script.src = visits.clustrmapsScriptUrl.startsWith('//')
+                ? `${window.location.protocol}${visits.clustrmapsScriptUrl}`
+                : visits.clustrmapsScriptUrl;
+            script.id = visits.clustrmapsScriptId || 'clustrmaps';
+            mapEl.appendChild(script);
             return;
         }
 

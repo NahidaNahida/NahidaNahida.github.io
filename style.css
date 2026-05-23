@@ -253,13 +253,15 @@ li{
 }
 
 .visitor-map {
-  margin-top: 6px;
-  max-width: 320px;
-  min-height: 120px;
+  margin: 6px auto 0;
+  max-width: 240px;
+  min-height: 96px;
+  text-align: center;
 }
 
 .visitor-map img,
 .visitor-map canvas,
 .visitor-map iframe {
   max-width: 100%;
+  height: auto;
 }
