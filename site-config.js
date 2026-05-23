@@ -14,6 +14,9 @@ window.SITE_CONFIG = {
         repo: 'NahidaNahida.github.io',
         branch: 'main'
     },
+    analytics: {
+        googleAnalyticsId: ''
+    },
     visits: {
         apiUrl: '',
         siteId: 'nahidanahida.github.io',
@@ -25,8 +28,8 @@ window.SITE_CONFIG = {
         lastCountKey: 'visitor_stats_site_last_count_v3',
         pendingKey: 'visitor_stats_site_pending_v1',
         visitorIdKey: 'visitor_stats_site_visitor_id_v1',
-        mapProvider: 'clustrmaps',
-        clustrmapsScriptUrl: ''
+        clustrmapsScriptUrl: '//clustrmaps.com/globe.js?d=REXGqgIlu9mozCV5PkBfeUZbB7oMr_mOVG7_SWTeQIQ',
+        clustrmapsScriptId: 'clstr_globe'
     },
     pages: [
         { id: 'home', label: 'Home', href: 'index.html' },

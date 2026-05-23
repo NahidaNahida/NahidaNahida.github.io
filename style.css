@@ -252,13 +252,8 @@ li{
   font-size: inherit;
 }
 
-.visitor-map-panel {
-  margin-top: 6px;
-  color: gray;
-  font-size: 0.82em;
-}
-
 .visitor-map {
+  margin-top: 6px;
   max-width: 320px;
   min-height: 120px;
 }

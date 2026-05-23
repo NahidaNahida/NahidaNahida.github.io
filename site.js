@@ -73,9 +73,7 @@
             <div id="visitor-stats" class="visitor-stats">
                 Page visits: <span id="visitor-page-views">Loading...</span>
             </div>
-            <div id="visitor-map-panel" class="visitor-map-panel" hidden>
-                <div id="visitor-map" class="visitor-map" aria-label="Visitor map"></div>
-            </div>
+            <div id="visitor-map" class="visitor-map" hidden></div>
         ` : '';
 
         footer.innerHTML = `
@@ -211,6 +209,26 @@
             });
     };
 
+    const loadAnalytics = () => {
+        const analyticsId = config.analytics && config.analytics.googleAnalyticsId;
+        if (!analyticsId) {
+            return;
+        }
+
+        const script = document.createElement('script');
+        script.async = true;
+        script.src = `https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(analyticsId)}`;
+        document.head.appendChild(script);
+
+        window.dataLayer = window.dataLayer || [];
+        function gtag() {
+            window.dataLayer.push(arguments);
+        }
+        window.gtag = window.gtag || gtag;
+        gtag('js', new Date());
+        gtag('config', analyticsId);
+    };
+
     const loadVisitorStats = () => {
         const pageViewsEl = document.getElementById('visitor-page-views');
         const visits = config.visits;
@@ -251,19 +269,21 @@
             localStorage.setItem(visits.cacheKey, JSON.stringify({ pageViews: String(pageViews) }));
         };
 
-        const loadClustrMaps = () => {
-            const mapPanel = document.getElementById('visitor-map-panel');
+        const loadVisitorMap = () => {
             const mapEl = document.getElementById('visitor-map');
-            if (!mapPanel || !mapEl || !visits.clustrmapsScriptUrl || mapEl.dataset.initialized === 'true') {
+            if (!mapEl || !visits.clustrmapsScriptUrl || mapEl.dataset.initialized === 'true') {
                 return;
             }
 
-            mapPanel.hidden = false;
+            mapEl.hidden = false;
             mapEl.dataset.initialized = 'true';
+
             const script = document.createElement('script');
             script.type = 'text/javascript';
-            script.src = visits.clustrmapsScriptUrl;
-            script.id = 'clustrmaps';
+            script.src = visits.clustrmapsScriptUrl.startsWith('//')
+                ? `${window.location.protocol}${visits.clustrmapsScriptUrl}`
+                : visits.clustrmapsScriptUrl;
+            script.id = visits.clustrmapsScriptId || 'clustrmaps';
             mapEl.appendChild(script);
         };
 
@@ -342,11 +362,11 @@
         };
 
         if (loadBackendVisitorStats()) {
-            loadClustrMaps();
+            loadVisitorMap();
             return;
         }
 
-        loadClustrMaps();
+        loadVisitorMap();
 
         const now = Date.now();
         const lastCountedAt = Number(localStorage.getItem(visits.lastCountKey) || 0);
@@ -411,6 +431,7 @@
         renderPageNav();
         generateTOC();
         setupSidebarToggle();
+        loadAnalytics();
         loadLastUpdated();
         loadVisitorStats();
     };
