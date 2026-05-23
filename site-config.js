@@ -24,7 +24,9 @@ window.SITE_CONFIG = {
         cacheKey: 'visitor_stats_site_cache_v3',
         lastCountKey: 'visitor_stats_site_last_count_v3',
         pendingKey: 'visitor_stats_site_pending_v1',
-        visitorIdKey: 'visitor_stats_site_visitor_id_v1'
+        visitorIdKey: 'visitor_stats_site_visitor_id_v1',
+        mapProvider: 'clustrmaps',
+        clustrmapsScriptUrl: ''
     },
     pages: [
         { id: 'home', label: 'Home', href: 'index.html' },

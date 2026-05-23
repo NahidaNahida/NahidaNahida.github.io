@@ -23,7 +23,43 @@ const jsonResponse = (request, data, status = 200) => {
 
 const normalizeSiteId = (siteId) => (siteId || 'default').replace(/[^a-zA-Z0-9._-]/g, '_');
 const counterKey = (siteId) => `counter:${normalizeSiteId(siteId)}`;
+const locationsKey = (siteId) => `locations:${normalizeSiteId(siteId)}`;
 const visitorKey = (siteId, visitorId) => `visitor:${normalizeSiteId(siteId)}:${visitorId}`;
+
+const getLocations = async (env, siteId) => {
+    try {
+        const locations = await env.VISIT_COUNTER.get(locationsKey(siteId), 'json');
+        return Array.isArray(locations) ? locations : [];
+    } catch (err) {
+        return [];
+    }
+};
+
+const updateLocations = async (env, siteId, request) => {
+    const cf = request.cf || {};
+    const lat = Number(cf.latitude);
+    const lon = Number(cf.longitude);
+    if (!Number.isFinite(lat) || !Number.isFinite(lon)) {
+        return getLocations(env, siteId);
+    }
+
+    const city = cf.city || 'Unknown city';
+    const country = cf.country || 'Unknown country';
+    const key = `${country}|${city}|${lat.toFixed(2)}|${lon.toFixed(2)}`;
+    const locations = await getLocations(env, siteId);
+    const existing = locations.find((location) => location.key === key);
+
+    if (existing) {
+        existing.count += 1;
+    } else {
+        locations.push({ key, country, city, lat, lon, count: 1 });
+    }
+
+    locations.sort((a, b) => b.count - a.count);
+    const topLocations = locations.slice(0, 200);
+    await env.VISIT_COUNTER.put(locationsKey(siteId), JSON.stringify(topLocations));
+    return topLocations;
+};
 
 export default {
     async fetch(request, env) {
@@ -40,7 +76,8 @@ export default {
         if (request.method === 'GET') {
             const siteId = url.searchParams.get('siteId');
             const pageViews = Number(await env.VISIT_COUNTER.get(counterKey(siteId)) || 0);
-            return jsonResponse(request, { pageViews });
+            const locations = await getLocations(env, siteId);
+            return jsonResponse(request, { pageViews, locations });
         }
 
         if (request.method !== 'POST') {
@@ -75,6 +112,10 @@ export default {
             });
         }
 
-        return jsonResponse(request, { pageViews, counted });
+        const locations = counted
+            ? await updateLocations(env, siteId, request)
+            : await getLocations(env, siteId);
+
+        return jsonResponse(request, { pageViews, counted, locations });
     }
 };

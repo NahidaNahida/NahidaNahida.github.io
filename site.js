@@ -68,13 +68,21 @@
             return;
         }
 
+        const currentPageId = getCurrentPageId();
+        const homeOnlyVisitorStats = currentPageId === 'home' ? `
+            <div id="visitor-stats" class="visitor-stats">
+                Page visits: <span id="visitor-page-views">Loading...</span>
+            </div>
+            <div id="visitor-map-panel" class="visitor-map-panel" hidden>
+                <div id="visitor-map" class="visitor-map" aria-label="Visitor map"></div>
+            </div>
+        ` : '';
+
         footer.innerHTML = `
             <div id="last-updated">
                 Last updated: <span id="updated-time">Loading...</span>
             </div>
-            <div id="visitor-stats" class="visitor-stats">
-                Page visits: <span id="visitor-page-views">Loading...</span>
-            </div>
+            ${homeOnlyVisitorStats}
         `;
     };
 
@@ -243,6 +251,22 @@
             localStorage.setItem(visits.cacheKey, JSON.stringify({ pageViews: String(pageViews) }));
         };
 
+        const loadClustrMaps = () => {
+            const mapPanel = document.getElementById('visitor-map-panel');
+            const mapEl = document.getElementById('visitor-map');
+            if (!mapPanel || !mapEl || !visits.clustrmapsScriptUrl || mapEl.dataset.initialized === 'true') {
+                return;
+            }
+
+            mapPanel.hidden = false;
+            mapEl.dataset.initialized = 'true';
+            const script = document.createElement('script');
+            script.type = 'text/javascript';
+            script.src = visits.clustrmapsScriptUrl;
+            script.id = 'clustrmaps';
+            mapEl.appendChild(script);
+        };
+
         const getVisitorId = () => {
             let visitorId = localStorage.getItem(visits.visitorIdKey);
             if (!visitorId) {
@@ -318,8 +342,11 @@
         };
 
         if (loadBackendVisitorStats()) {
+            loadClustrMaps();
             return;
         }
+
+        loadClustrMaps();
 
         const now = Date.now();
         const lastCountedAt = Number(localStorage.getItem(visits.lastCountKey) || 0);

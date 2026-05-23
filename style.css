@@ -138,24 +138,45 @@ a:hover{
 }
 
 .pub-badges {
-    display: inline-block;
-    margin-right: 6px;
+    display: flex;
+    width: fit-content;
+    margin-bottom: 4px;
     vertical-align: baseline;
 }
 
+.pub-badges span + span {
+    margin-left: 3px;
+}
+
 .pub-badges .venue,
-.pub-badges .mybold {
+.pub-badges .mybold,
+.pub-badges .rank,
+.pub-badges .tag {
     display: inline-block;
     padding: 0 6px;
-    border: 1px solid #258a9a;
     border-radius: 3px;
-    background: #33a6b8;
     color: #fff;
     font-size: 0.92em;
     font-style: normal;
     font-weight: bold;
     line-height: 1.25;
     text-align: center;
+}
+
+.pub-badges .venue,
+.pub-badges .mybold {
+    border: 1px solid #258a9a;
+    background: #33a6b8;
+}
+
+.pub-badges .rank {
+    border: 1px solid #8f1f1f;
+    background: #a83232;
+}
+
+.pub-badges .tag {
+    border: 1px solid #6d3a9c;
+    background: #7e4db3;
 }
 
 h1, p {
@@ -203,6 +224,17 @@ li{
   line-height: 1.6;
 }
 
+.publication-year {
+  margin-top: 24px;
+  margin-bottom: 6px;
+  font-weight: bold;
+  font-size: 1.05em;
+}
+
+.publication-list {
+  margin-top: 0;
+}
+
 .visitor-stats {
   margin-top: 6px;
   font-size: 0.9em;
@@ -218,4 +250,21 @@ li{
 .visitor-stats span {
   color: inherit;
   font-size: inherit;
+}
+
+.visitor-map-panel {
+  margin-top: 6px;
+  color: gray;
+  font-size: 0.82em;
+}
+
+.visitor-map {
+  max-width: 320px;
+  min-height: 120px;
+}
+
+.visitor-map img,
+.visitor-map canvas,
+.visitor-map iframe {
+  max-width: 100%;
 }
