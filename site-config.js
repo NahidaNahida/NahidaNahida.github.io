@@ -18,8 +18,8 @@ window.SITE_CONFIG = {
         googleAnalyticsId: ''
     },
     visits: {
-        clustrmapsScriptUrl: '//clustrmaps.com/map_v2.js?cl=ffffff&w=240&t=tt&d=REXGqgIlu9mozCV5PkBfeUZbB7oMr_mOVG7_SWTeQIQ',
-        clustrmapsScriptId: 'clustrmaps-widget'
+        clustrmapsMapImageUrl: '//www.clustrmaps.com/map_v2.png?cl=ffffff&w=240&t=tt&d=REXGqgIlu9mozCV5PkBfeUZbB7oMr_mOVG7_SWTeQIQ',
+        clustrmapsStatsUrl: 'https://clustrmaps.com/site/1ca3e'
     },
     pages: [
         { id: 'home', label: 'Home', href: 'index.html' },

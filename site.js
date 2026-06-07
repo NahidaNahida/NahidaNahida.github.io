@@ -232,22 +232,35 @@
     const loadVisitorMap = () => {
         const visits = config.visits;
         const mapEl = document.getElementById('visitor-map');
-        if (!visits || !mapEl || !visits.clustrmapsScriptUrl || mapEl.dataset.initialized === 'true') {
+        if (!visits || !mapEl || !visits.clustrmapsMapImageUrl || mapEl.dataset.initialized === 'true') {
             return;
         }
 
-        const scriptUrl = visits.clustrmapsScriptUrl.startsWith('//')
-            ? `https:${visits.clustrmapsScriptUrl}`
-            : visits.clustrmapsScriptUrl;
+        const imageUrl = visits.clustrmapsMapImageUrl.startsWith('//')
+            ? `https:${visits.clustrmapsMapImageUrl}`
+            : visits.clustrmapsMapImageUrl;
 
-        mapEl.hidden = false;
         mapEl.dataset.initialized = 'true';
 
-        const script = document.createElement('script');
-        script.type = 'text/javascript';
-        script.id = visits.clustrmapsScriptId || 'clustrmaps';
-        script.src = scriptUrl;
-        mapEl.appendChild(script);
+        const link = document.createElement('a');
+        link.href = visits.clustrmapsStatsUrl || imageUrl;
+        link.target = '_blank';
+        link.rel = 'noopener noreferrer';
+
+        const image = document.createElement('img');
+        image.src = imageUrl;
+        image.alt = 'Visitor map';
+        image.loading = 'lazy';
+        image.onload = () => {
+            mapEl.hidden = false;
+        };
+        image.onerror = () => {
+            mapEl.hidden = true;
+            mapEl.innerHTML = '';
+        };
+
+        link.appendChild(image);
+        mapEl.appendChild(link);
     };
 
     const initSite = () => {
