@@ -235,53 +235,8 @@ li{
   margin-top: 0;
 }
 
-.visitor-stats {
-  margin-top: 6px;
-  font-size: 0.9em;
-  color: gray;
-}
-
 #last-updated {
   margin-top: 20px;
   font-size: 0.9em;
   color: gray;
-}
-
-.visitor-stats span {
-  color: inherit;
-  font-size: inherit;
-}
-
-.visitor-map {
-  margin: 6px auto 0;
-  max-width: 240px;
-  min-height: 120px;
-  text-align: center;
-}
-
-.visitor-map-fallback {
-  display: flex;
-  min-height: 0;
-  gap: 8px;
-  align-items: center;
-  justify-content: center;
-  color: gray;
-  font-size: 0.86em;
-}
-
-.visitor-map-fallback a {
-  color: #2a5db0;
-}
-
-.visitor-map img,
-.visitor-map canvas,
-.visitor-map iframe {
-  max-width: 100%;
-  height: auto;
-}
-
-.visitor-map > iframe {
-  width: 240px;
-  height: 120px;
-  border: 0;
 }

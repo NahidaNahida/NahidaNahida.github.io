@@ -17,21 +17,6 @@ window.SITE_CONFIG = {
     analytics: {
         googleAnalyticsId: ''
     },
-    visits: {
-        apiUrl: '',
-        siteId: 'nahidanahida.github.io',
-        syncIntervalMs: 30 * 1000,
-        countIntervalMs: 10 * 60 * 1000,
-        intervalMs: 2 * 60 * 1000,
-        publishedHost: 'nahidanahida.github.io',
-        cacheKey: 'visitor_stats_site_cache_v3',
-        lastCountKey: 'visitor_stats_site_last_count_v3',
-        pendingKey: 'visitor_stats_site_pending_v1',
-        visitorIdKey: 'visitor_stats_site_visitor_id_v1',
-        clustrmapsScriptUrl: '//cdn.clustrmaps.com/map_v2.js?cl=ffffff&w=240&t=tt&d=REXGqgIlu9mozCV5PkBfeUZbB7oMr_mOVG7_SWTeQIQ',
-        clustrmapsFallbackUrl: 'https://clustrmaps.com/',
-        clustrmapsScriptId: 'clustrmaps-widget'
-    },
     pages: [
         { id: 'home', label: 'Home', href: 'index.html' },
         { id: 'news', label: 'News', href: 'news.html' },
