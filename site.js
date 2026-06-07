@@ -71,7 +71,7 @@
         const currentPageId = getCurrentPageId();
         const homeOnlyVisitorStats = currentPageId === 'home' ? `
             <div id="visitor-stats" class="visitor-stats">
-                Visits:
+                Visits: <span id="visitor-page-views">Loading...</span>
             </div>
             <div id="visitor-map" class="visitor-map" hidden></div>
         ` : '';
@@ -235,7 +235,39 @@
         if (!visits) {
             return;
         }
-        if (!pageViewsEl) {
+
+        const getExternalScriptUrl = (scriptUrl) => {
+            if (!scriptUrl) {
+                return '';
+            }
+
+            return scriptUrl.startsWith('//') ? `https:${scriptUrl}` : scriptUrl;
+        };
+
+        const escapeHtmlAttr = (value) => String(value)
+            .replace(/&/g, '&amp;')
+            .replace(/"/g, '&quot;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;');
+
+        const showVisitorMapFallback = (mapEl) => {
+            mapEl.classList.add('visitor-map-fallback');
+            mapEl.hidden = false;
+            mapEl.innerHTML = '';
+
+            const message = document.createElement('span');
+            message.textContent = 'Visitor map unavailable';
+
+            const link = document.createElement('a');
+            link.href = visits.clustrmapsFallbackUrl || 'https://clustrmaps.com/';
+            link.target = '_blank';
+            link.rel = 'noopener noreferrer';
+            link.textContent = 'Open map';
+
+            mapEl.append(message, link);
+        };
+
+        const loadVisitorMap = () => {
             const mapEl = document.getElementById('visitor-map');
             if (!mapEl || !visits.clustrmapsScriptUrl || mapEl.dataset.initialized === 'true') {
                 return;
@@ -244,13 +276,83 @@
             mapEl.hidden = false;
             mapEl.dataset.initialized = 'true';
 
-            const script = document.createElement('script');
-            script.type = 'text/javascript';
-            script.src = visits.clustrmapsScriptUrl.startsWith('//')
-                ? `${window.location.protocol}${visits.clustrmapsScriptUrl}`
-                : visits.clustrmapsScriptUrl;
-            script.id = visits.clustrmapsScriptId || 'clustrmaps';
-            mapEl.appendChild(script);
+            const scriptSrc = getExternalScriptUrl(visits.clustrmapsScriptUrl);
+            const iframe = document.createElement('iframe');
+            const frameId = `visitor-map-${Date.now()}`;
+            iframe.title = 'Visitor map';
+            iframe.loading = 'lazy';
+            iframe.sandbox = 'allow-scripts allow-popups allow-popups-to-escape-sandbox';
+            iframe.srcdoc = `
+                <!doctype html>
+                <html>
+                <head>
+                    <base target="_blank">
+                    <style>
+                        html,
+                        body {
+                            margin: 0;
+                            width: 100%;
+                            min-height: 100%;
+                            overflow: hidden;
+                            background: transparent;
+                            text-align: center;
+                        }
+
+                        img,
+                        canvas,
+                        iframe {
+                            max-width: 100%;
+                            height: auto;
+                        }
+                    </style>
+                </head>
+                <body>
+                    <script
+                        id="${escapeHtmlAttr(visits.clustrmapsScriptId || 'clustrmaps')}"
+                        src="${escapeHtmlAttr(scriptSrc)}"
+                        onerror="parent.postMessage({ type: 'visitor-map-error', frameId: '${frameId}' }, '*')">
+                    <\/script>
+                    <script>
+                        window.setTimeout(function () {
+                            var rendered = document.querySelector('img, canvas, iframe, a, object, embed');
+                            if (rendered) {
+                                parent.postMessage({ type: 'visitor-map-ready', frameId: '${frameId}' }, '*');
+                            }
+                        }, 5000);
+                    <\/script>
+                </body>
+                </html>
+            `;
+            mapEl.appendChild(iframe);
+
+            let mapLoaded = false;
+            const handleMessage = (event) => {
+                if (!event.data || event.data.frameId !== frameId) {
+                    return;
+                }
+
+                if (event.data.type === 'visitor-map-ready') {
+                    mapLoaded = true;
+                    window.removeEventListener('message', handleMessage);
+                }
+
+                if (event.data.type === 'visitor-map-error') {
+                    window.removeEventListener('message', handleMessage);
+                    showVisitorMapFallback(mapEl);
+                }
+            };
+            window.addEventListener('message', handleMessage);
+
+            window.setTimeout(() => {
+                window.removeEventListener('message', handleMessage);
+                if (!mapLoaded) {
+                    showVisitorMapFallback(mapEl);
+                }
+            }, 8000);
+        };
+
+        if (!pageViewsEl) {
+            loadVisitorMap();
             return;
         }
 
@@ -285,24 +387,6 @@
 
         const cachePageViews = (pageViews) => {
             localStorage.setItem(visits.cacheKey, JSON.stringify({ pageViews: String(pageViews) }));
-        };
-
-        const loadVisitorMap = () => {
-            const mapEl = document.getElementById('visitor-map');
-            if (!mapEl || !visits.clustrmapsScriptUrl || mapEl.dataset.initialized === 'true') {
-                return;
-            }
-
-            mapEl.hidden = false;
-            mapEl.dataset.initialized = 'true';
-
-            const script = document.createElement('script');
-            script.type = 'text/javascript';
-            script.src = visits.clustrmapsScriptUrl.startsWith('//')
-                ? `${window.location.protocol}${visits.clustrmapsScriptUrl}`
-                : visits.clustrmapsScriptUrl;
-            script.id = visits.clustrmapsScriptId || 'clustrmaps';
-            mapEl.appendChild(script);
         };
 
         const getVisitorId = () => {
