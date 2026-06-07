@@ -240,3 +240,25 @@ li{
   font-size: 0.9em;
   color: gray;
 }
+
+.visitor-stats {
+  margin-top: 6px;
+  font-size: 0.9em;
+  color: gray;
+}
+
+.visitor-map {
+  margin: 6px auto 0;
+  max-width: 240px;
+  min-height: 120px;
+  text-align: center;
+}
+
+.visitor-map img,
+.visitor-map canvas,
+.visitor-map iframe,
+.visitor-map object,
+.visitor-map embed {
+  max-width: 100%;
+  height: auto;
+}

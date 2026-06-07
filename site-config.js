@@ -17,6 +17,10 @@ window.SITE_CONFIG = {
     analytics: {
         googleAnalyticsId: ''
     },
+    visits: {
+        clustrmapsScriptUrl: '//clustrmaps.com/map_v2.js?cl=ffffff&w=240&t=tt&d=REXGqgIlu9mozCV5PkBfeUZbB7oMr_mOVG7_SWTeQIQ',
+        clustrmapsScriptId: 'clustrmaps-widget'
+    },
     pages: [
         { id: 'home', label: 'Home', href: 'index.html' },
         { id: 'news', label: 'News', href: 'news.html' },

@@ -68,10 +68,19 @@
             return;
         }
 
+        const currentPageId = getCurrentPageId();
+        const homeOnlyVisits = currentPageId === 'home' ? `
+            <div id="visitor-stats" class="visitor-stats">
+                Visits:
+            </div>
+            <div id="visitor-map" class="visitor-map" hidden></div>
+        ` : '';
+
         footer.innerHTML = `
             <div id="last-updated">
                 Last updated: <span id="updated-time">Loading...</span>
             </div>
+            ${homeOnlyVisits}
         `;
     };
 
@@ -220,6 +229,27 @@
         gtag('config', analyticsId);
     };
 
+    const loadVisitorMap = () => {
+        const visits = config.visits;
+        const mapEl = document.getElementById('visitor-map');
+        if (!visits || !mapEl || !visits.clustrmapsScriptUrl || mapEl.dataset.initialized === 'true') {
+            return;
+        }
+
+        const scriptUrl = visits.clustrmapsScriptUrl.startsWith('//')
+            ? `https:${visits.clustrmapsScriptUrl}`
+            : visits.clustrmapsScriptUrl;
+
+        mapEl.hidden = false;
+        mapEl.dataset.initialized = 'true';
+
+        const script = document.createElement('script');
+        script.type = 'text/javascript';
+        script.id = visits.clustrmapsScriptId || 'clustrmaps';
+        script.src = scriptUrl;
+        mapEl.appendChild(script);
+    };
+
     const initSite = () => {
         renderSidebar();
         renderHeader();
@@ -229,6 +259,7 @@
         setupSidebarToggle();
         loadAnalytics();
         loadLastUpdated();
+        loadVisitorMap();
     };
 
     if (document.readyState === 'loading') {
