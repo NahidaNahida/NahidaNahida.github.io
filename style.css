@@ -235,6 +235,42 @@ li{
   margin-top: 0;
 }
 
+.publication-notation {
+  margin: 8px 0 16px;
+  color: #555;
+  font-size: 0.9em;
+}
+
+.notation-mark {
+  display: inline-block;
+  min-width: 1.1em;
+  color: #2a5db0;
+  font-style: normal;
+  text-align: center;
+}
+
+.note-cofirst::before,
+.note-corresponding::before {
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+}
+
+.note-cofirst::before {
+  content: "\f069";
+}
+
+.note-corresponding::before {
+  content: "\f0e0";
+}
+
+.author-note {
+  color: #2a5db0;
+  font-size: 0.72em;
+  line-height: 0;
+  margin-left: 1px;
+  vertical-align: super;
+}
+
 #last-updated {
   margin-top: 20px;
   font-size: 0.9em;
