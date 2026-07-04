@@ -244,7 +244,7 @@ li{
 .notation-mark {
   display: inline-block;
   min-width: 1.1em;
-  color: #2a5db0;
+  color: #58b8b0;
   font-style: normal;
   text-align: center;
 }
@@ -264,8 +264,8 @@ li{
 }
 
 .author-note {
-  color: #2a5db0;
-  font-size: 0.72em;
+  color: #58b8b0;
+  font-size: 0.5em;
   line-height: 0;
   margin-left: 1px;
   vertical-align: super;
