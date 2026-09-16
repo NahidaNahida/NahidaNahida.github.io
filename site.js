@@ -232,34 +232,46 @@
     const loadVisitorMap = () => {
         const visits = config.visits;
         const mapEl = document.getElementById('visitor-map');
-        if (!visits || !mapEl || !visits.clustrmapsMapImageUrl || mapEl.dataset.initialized === 'true') {
+        if (!visits || !mapEl || mapEl.dataset.initialized === 'true') {
             return;
         }
 
-        const imageUrl = visits.clustrmapsMapImageUrl.startsWith('//')
-            ? `https:${visits.clustrmapsMapImageUrl}`
-            : visits.clustrmapsMapImageUrl;
+        if (!visits.mapMyVisitorsWidgetUrl) {
+            mapEl.textContent = 'Visitor map is temporarily unavailable.';
+            return;
+        }
 
         mapEl.dataset.initialized = 'true';
 
-        const link = document.createElement('a');
-        link.href = visits.clustrmapsStatsUrl || imageUrl;
-        link.target = '_blank';
-        link.rel = 'noopener noreferrer';
+        const status = document.createElement('p');
+        status.setAttribute('role', 'status');
+        status.textContent = 'Loading visitor map...';
+        mapEl.appendChild(status);
 
-        const image = document.createElement('img');
-        image.alt = 'Visitor map';
-        // Request the map immediately, even while the footer is off screen.
-        // A lazy image inside a hidden container cannot reveal that container.
-        image.loading = 'eager';
-        image.onerror = () => {
-            // Keep the statistics link available when the image service fails.
-            link.textContent = 'View visitor statistics';
+        const script = document.createElement('script');
+        // The provider locates this exact ID and inserts the map beside it.
+        // Keep the script in the visible footer, rather than in the head.
+        script.id = 'mmvst_globe';
+        script.async = true;
+        script.src = visits.mapMyVisitorsWidgetUrl.startsWith('//')
+            ? `https:${visits.mapMyVisitorsWidgetUrl}`
+            : visits.mapMyVisitorsWidgetUrl;
+        script.onload = () => {
+            status.remove();
         };
-        image.src = imageUrl;
+        script.onerror = () => {
+            status.textContent = 'Visitor map is temporarily unavailable.';
+        };
+        mapEl.appendChild(script);
 
-        link.appendChild(image);
-        mapEl.appendChild(link);
+        if (visits.mapMyVisitorsStatsUrl) {
+            const link = document.createElement('a');
+            link.href = visits.mapMyVisitorsStatsUrl;
+            link.target = '_blank';
+            link.rel = 'noopener noreferrer';
+            link.textContent = 'View visitor statistics';
+            mapEl.appendChild(link);
+        }
     };
 
     const initSite = () => {

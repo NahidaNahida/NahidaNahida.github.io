@@ -23,7 +23,9 @@ The site supports Google Analytics, following the common AcadHomepage setup. The
 
 Visitor geography is available in the Google Analytics dashboard, rather than as an embedded map on the page.
 
-The home page also shows a small visible `Visits:` section using the ClustrMaps 2D map image configured in `visits.clustrmapsMapImageUrl`. The image loads immediately, including when the footer is off screen. If the image fails to load, the section keeps a `View visitor statistics` link to `visits.clustrmapsStatsUrl`.
+The home page embeds a MapMyVisitors globe in the `Visits:` section. `visits.mapMyVisitorsWidgetUrl` contains the globe script URL generated for this homepage, loaded using the required `mmvst_globe` script ID. The widget URL must contain this site's own `d` identifier; another site's identifier would display that site's data. The globe links to the provider's statistics page; optionally set `visits.mapMyVisitorsStatsUrl` to show an additional text link.
+
+The globe loads directly in the visible footer and uses the map container's width. If the widget URL is missing or the script fails to load, the section displays an unavailable message. A configured statistics link remains available below the globe.
 
 ## Adding a New Page
 

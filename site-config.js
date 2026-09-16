@@ -18,8 +18,10 @@ window.SITE_CONFIG = {
         googleAnalyticsId: ''
     },
     visits: {
-        clustrmapsMapImageUrl: '//www.clustrmaps.com/map_v2.png?cl=ffffff&w=240&t=tt&d=REXGqgIlu9mozCV5PkBfeUZbB7oMr_mOVG7_SWTeQIQ',
-        clustrmapsStatsUrl: 'https://clustrmaps.com/site/1ca3e'
+        // MapMyVisitors globe script generated for this homepage.
+        // The d parameter identifies this site's visitor data.
+        mapMyVisitorsWidgetUrl: 'https://mapmyvisitors.com/globe.js?d=pRVmhV1VeVAr49l-74GqO9imHkjifyVDI-cJhW2XF-M',
+        mapMyVisitorsStatsUrl: ''
     },
     pages: [
         { id: 'home', label: 'Home', href: 'index.html' },
