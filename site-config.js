@@ -17,7 +17,7 @@ window.SITE_CONFIG = {
     analytics: {
         googleAnalyticsId: ''
     },
-    visits: {
+    /* visits: {
         // MapMyVisitors globe script generated for this homepage.
         // The d parameter identifies this site's visitor data.
         mapMyVisitorsWidgetUrl: 'https://mapmyvisitors.com/map.js?cl=ffffff&w=300&t=n&d=pPpkSfgg1S9hOda3pk9QqsN1B73Ijzp_s9dnTIRVJSo',

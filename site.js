@@ -11,7 +11,7 @@
 
         sidebar.id = 'sidebar';
         sidebar.innerHTML = `
-            <button id="toggle-sidebar" type="button">â˜°</button>
+            <button id="toggle-sidebar" type="button">â˜?/button>
             <nav id="toc">
                 <b>Contents</b>
                 <ul id="toc-list"></ul>
@@ -73,7 +73,7 @@
             <div id="visitor-stats" class="visitor-stats">
                 Visits:
             </div>
-            <div id="visitor-map" class="visitor-map"></div>
+            <!-- Visits disabled. <div id="visitor-map" class="visitor-map"></div> -->
         ` : '';
 
         footer.innerHTML = `
@@ -229,7 +229,7 @@
         gtag('config', analyticsId);
     };
 
-    const loadVisitorMap = () => {
+    /* const loadVisitorMap = () => {
         const visits = config.visits;
         const mapEl = document.getElementById('visitor-map');
         if (!visits || !mapEl || mapEl.dataset.initialized === 'true') {
@@ -318,7 +318,7 @@
         setupSidebarToggle();
         loadAnalytics();
         loadLastUpdated();
-        loadVisitorMap();
+        // loadVisitorMap(); // Visits disabled.
     };
 
     if (document.readyState === 'loading') {
@@ -327,3 +327,4 @@
         initSite();
     }
 })();
+
