@@ -73,7 +73,7 @@
             <div id="visitor-stats" class="visitor-stats">
                 Visits:
             </div>
-            <div id="visitor-map" class="visitor-map" hidden></div>
+            <div id="visitor-map" class="visitor-map"></div>
         ` : '';
 
         footer.innerHTML = `
@@ -248,16 +248,15 @@
         link.rel = 'noopener noreferrer';
 
         const image = document.createElement('img');
-        image.src = imageUrl;
         image.alt = 'Visitor map';
-        image.loading = 'lazy';
-        image.onload = () => {
-            mapEl.hidden = false;
-        };
+        // Request the map immediately, even while the footer is off screen.
+        // A lazy image inside a hidden container cannot reveal that container.
+        image.loading = 'eager';
         image.onerror = () => {
-            mapEl.hidden = true;
-            mapEl.innerHTML = '';
+            // Keep the statistics link available when the image service fails.
+            link.textContent = 'View visitor statistics';
         };
+        image.src = imageUrl;
 
         link.appendChild(image);
         mapEl.appendChild(link);

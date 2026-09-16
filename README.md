@@ -23,7 +23,7 @@ The site supports Google Analytics, following the common AcadHomepage setup. The
 
 Visitor geography is available in the Google Analytics dashboard, rather than as an embedded map on the page.
 
-The home page also shows a small visible `Visits:` section using the ClustrMaps 2D map image configured in `visits.clustrmapsMapImageUrl`.
+The home page also shows a small visible `Visits:` section using the ClustrMaps 2D map image configured in `visits.clustrmapsMapImageUrl`. The image loads immediately, including when the footer is off screen. If the image fails to load, the section keeps a `View visitor statistics` link to `visits.clustrmapsStatsUrl`.
 
 ## Adding a New Page
 
