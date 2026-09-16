@@ -278,6 +278,19 @@
             globeLink.rel = 'noopener noreferrer';
             return true;
         };
+        // The provider may replace the generated anchor after initial render.
+        // Delegate the click so the statistics page remains the destination
+        // even when the widget refreshes its markup.
+        if (visits.mapMyVisitorsStatsUrl) {
+            mapEl.addEventListener('click', (event) => {
+                const globeLink = event.target.closest('#mmvst_a');
+                if (!globeLink) {
+                    return;
+                }
+                event.preventDefault();
+                window.location.assign(visits.mapMyVisitorsStatsUrl);
+            });
+        }
         const globeLinkObserver = new MutationObserver(() => {
             if (setGlobeStatsLink()) {
                 globeLinkObserver.disconnect();
