@@ -251,7 +251,7 @@
         const script = document.createElement('script');
         // The provider locates this exact ID and inserts the map beside it.
         // Keep the script in the visible footer, rather than in the head.
-        script.id = 'mmvst_globe';
+        script.id = /(?:^|\/)map\.js(?:\?|$)/.test(script.src) ? 'mapmyvisitors' : 'mmvst_globe';
         script.async = true;
         script.src = visits.mapMyVisitorsWidgetUrl.startsWith('//')
             ? `https:${visits.mapMyVisitorsWidgetUrl}`

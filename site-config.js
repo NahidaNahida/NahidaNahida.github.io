@@ -2,7 +2,7 @@ window.SITE_CONFIG = {
     assetsVersion: '20260522-8',
     profile: {
         name: 'Yuechen Li',
-        chineseName: '李玥辰',
+        chineseName: '李玥�?,
         links: [
             { label: 'GitHub', href: 'https://github.com/NahidaNahida', iconClass: 'fab fa-github' },
             { label: 'Google Scholar', href: 'https://scholar.google.com.hk/citations?user=hf8TWEMAAAAJ&hl=zh-CN', iconClass: 'fab fa-google' },
@@ -20,7 +20,7 @@ window.SITE_CONFIG = {
     visits: {
         // MapMyVisitors globe script generated for this homepage.
         // The d parameter identifies this site's visitor data.
-        mapMyVisitorsWidgetUrl: 'https://mapmyvisitors.com/globe.js?d=pRVmhV1VeVAr49l-74GqO9imHkjifyVDI-cJhW2XF-M',
+        mapMyVisitorsWidgetUrl: 'https://mapmyvisitors.com/map.js?cl=ffffff&w=300&t=n&d=pPpkSfgg1S9hOda3pk9QqsN1B73Ijzp_s9dnTIRVJSo',
         mapMyVisitorsStatsUrl: 'https://mapmyvisitors.com/web/1c8a3'
     },
     pages: [
@@ -29,3 +29,4 @@ window.SITE_CONFIG = {
         { id: 'publications', label: 'Publications', href: 'publications.html' }
     ]
 };
+
