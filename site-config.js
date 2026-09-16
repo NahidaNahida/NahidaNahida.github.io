@@ -21,7 +21,7 @@ window.SITE_CONFIG = {
         // MapMyVisitors globe script generated for this homepage.
         // The d parameter identifies this site's visitor data.
         mapMyVisitorsWidgetUrl: 'https://mapmyvisitors.com/globe.js?d=pRVmhV1VeVAr49l-74GqO9imHkjifyVDI-cJhW2XF-M',
-        mapMyVisitorsStatsUrl: ''
+        mapMyVisitorsStatsUrl: 'https://mapmyvisitors.com/web/1c8a3'
     },
     pages: [
         { id: 'home', label: 'Home', href: 'index.html' },

@@ -264,6 +264,28 @@
         };
         mapEl.appendChild(script);
 
+        // MapMyVisitors creates its own anchor asynchronously. Replace the
+        // provider homepage URL with this site's statistics page after the
+        // globe has been inserted, so clicking anywhere on the globe opens
+        // the requested visitor report.
+        const setGlobeStatsLink = () => {
+            const globeLink = mapEl.querySelector('#mmvst_a');
+            if (!globeLink || !visits.mapMyVisitorsStatsUrl) {
+                return false;
+            }
+            globeLink.href = visits.mapMyVisitorsStatsUrl;
+            globeLink.target = '_self';
+            globeLink.rel = 'noopener noreferrer';
+            return true;
+        };
+        const globeLinkObserver = new MutationObserver(() => {
+            if (setGlobeStatsLink()) {
+                globeLinkObserver.disconnect();
+            }
+        });
+        globeLinkObserver.observe(mapEl, { childList: true, subtree: true });
+        setGlobeStatsLink();
+
         if (visits.mapMyVisitorsStatsUrl) {
             const link = document.createElement('a');
             link.href = visits.mapMyVisitorsStatsUrl;
