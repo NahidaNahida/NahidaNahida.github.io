@@ -23,7 +23,9 @@ The site supports Google Analytics, following the common AcadHomepage setup. The
 
 Visitor geography is available in the Google Analytics dashboard, rather than as an embedded map on the page.
 
-The home page embeds a MapMyVisitors globe in the `Visits:` section. `visits.mapMyVisitorsWidgetUrl` contains the globe script URL generated for this homepage, loaded using the required `mmvst_globe` script ID. The widget URL must contain this site's own `d` identifier; another site's identifier would display that site's data. The globe links to the provider's statistics page; optionally set `visits.mapMyVisitorsStatsUrl` to show an additional text link.
+Visitor tracking is currently disabled with `visits.enabled: false` in `site-config.js`. This hides the entire `Visits:` section and prevents the widget script from loading. Set it to `true` to enable the widget; do not comment out blocks of the shared scripts.
+
+When enabled, the home page embeds a MapMyVisitors widget in the `Visits:` section. `visits.mapMyVisitorsWidgetUrl` contains the script URL generated for this homepage. The script ID is `mapmyvisitors` for `map.js` and `mmvst_globe` for the globe script. The widget URL must contain this site's own `d` identifier; another site's identifier would display that site's data. The widget links to the provider's statistics page; optionally set `visits.mapMyVisitorsStatsUrl` to show an additional text link.
 
 The globe loads directly in the visible footer and uses the map container's width. If the widget URL is missing or the script fails to load, the section displays an unavailable message. A configured statistics link remains available below the globe.
 

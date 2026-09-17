@@ -2,7 +2,7 @@ window.SITE_CONFIG = {
     assetsVersion: '20260522-8',
     profile: {
         name: 'Yuechen Li',
-        chineseName: '李玥�?,
+        chineseName: '李玥辰',
         links: [
             { label: 'GitHub', href: 'https://github.com/NahidaNahida', iconClass: 'fab fa-github' },
             { label: 'Google Scholar', href: 'https://scholar.google.com.hk/citations?user=hf8TWEMAAAAJ&hl=zh-CN', iconClass: 'fab fa-google' },
@@ -17,7 +17,9 @@ window.SITE_CONFIG = {
     analytics: {
         googleAnalyticsId: ''
     },
-    /* visits: {
+    visits: {
+        // Disable the widget without interrupting page initialization.
+        enabled: false,
         // MapMyVisitors globe script generated for this homepage.
         // The d parameter identifies this site's visitor data.
         mapMyVisitorsWidgetUrl: 'https://mapmyvisitors.com/map.js?cl=ffffff&w=300&t=n&d=pPpkSfgg1S9hOda3pk9QqsN1B73Ijzp_s9dnTIRVJSo',

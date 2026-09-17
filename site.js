@@ -11,7 +11,7 @@
 
         sidebar.id = 'sidebar';
         sidebar.innerHTML = `
-            <button id="toggle-sidebar" type="button">â˜?/button>
+            <button id="toggle-sidebar" type="button">â˜°</button>
             <nav id="toc">
                 <b>Contents</b>
                 <ul id="toc-list"></ul>
@@ -69,11 +69,11 @@
         }
 
         const currentPageId = getCurrentPageId();
-        const homeOnlyVisits = currentPageId === 'home' ? `
+        const homeOnlyVisits = currentPageId === 'home' && config.visits && config.visits.enabled !== false ? `
             <div id="visitor-stats" class="visitor-stats">
                 Visits:
             </div>
-            <!-- Visits disabled. <div id="visitor-map" class="visitor-map"></div> -->
+            <div id="visitor-map" class="visitor-map"></div>
         ` : '';
 
         footer.innerHTML = `
@@ -229,10 +229,10 @@
         gtag('config', analyticsId);
     };
 
-    /* const loadVisitorMap = () => {
+    const loadVisitorMap = () => {
         const visits = config.visits;
         const mapEl = document.getElementById('visitor-map');
-        if (!visits || !mapEl || mapEl.dataset.initialized === 'true') {
+        if (!visits || visits.enabled === false || !mapEl || mapEl.dataset.initialized === 'true') {
             return;
         }
 
@@ -251,11 +251,11 @@
         const script = document.createElement('script');
         // The provider locates this exact ID and inserts the map beside it.
         // Keep the script in the visible footer, rather than in the head.
-        script.id = /(?:^|\/)map\.js(?:\?|$)/.test(script.src) ? 'mapmyvisitors' : 'mmvst_globe';
         script.async = true;
         script.src = visits.mapMyVisitorsWidgetUrl.startsWith('//')
             ? `https:${visits.mapMyVisitorsWidgetUrl}`
             : visits.mapMyVisitorsWidgetUrl;
+        script.id = /(?:^|\/)map\.js(?:\?|$)/.test(script.src) ? 'mapmyvisitors' : 'mmvst_globe';
         script.onload = () => {
             status.remove();
         };
@@ -318,7 +318,7 @@
         setupSidebarToggle();
         loadAnalytics();
         loadLastUpdated();
-        // loadVisitorMap(); // Visits disabled.
+        loadVisitorMap();
     };
 
     if (document.readyState === 'loading') {
@@ -327,4 +327,3 @@
         initSite();
     }
 })();
-
