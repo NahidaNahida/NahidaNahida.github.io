@@ -1,12 +1,3 @@
-@font-face {
-  font-family: "Site Kai";
-  src: url("assets/fonts/kaiti-sc-subset.woff2") format("woff2");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-  unicode-range: U+3000-303F, U+3400-4DBF, U+4E00-9FFF, U+FF00-FFEF;
-}
-
 body{
   margin:0;
   font-family: "Palatino Linotype","Book Antiqua",Palatino,serif;
@@ -75,9 +66,9 @@ body{
     transition: margin-left 0.3s ease;
 }
 
-/* Use macOS's built-in Simplified Chinese Kai face when Chinese glyphs appear. */
+/* Prefer installed Kai fonts without downloading a webfont. */
 :lang(zh), :lang(zh-Hans), :lang(zh-CN), :lang(zh-SG), :lang(zh-TW), :lang(zh-Hant) {
-  font-family: "Site Kai", "楷体-简", "STKaitiSC-Regular", "Kaiti SC", KaiTi, serif;
+  font-family: "楷体-简", "STKaitiSC-Regular", "Kaiti SC", KaiTi, "STKaiti", serif;
 }
 
 h1{

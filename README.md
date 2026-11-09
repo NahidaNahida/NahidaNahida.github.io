@@ -17,10 +17,10 @@ The website includes my brief biography, research interests, selected publicatio
 
 ## Typography and publication badges
 
-Chinese text marked with `lang="zh"` uses the bundled Kai webfont subset, so
-the intended Kai face is available in Safari and on Windows without requiring
-the visitor to install a local font. The CSS keeps system Kai families as
-fallbacks. English body text and publication badges retain the Palatino stack.
+Chinese text marked with `lang="zh"` uses installed Kai fonts when available,
+with system family-name fallbacks for macOS and Windows. No webfont is
+downloaded, so the site does not add a large font request. English body text
+and publication badges retain the Palatino stack.
 
 All publication badges share `.pub-badges > span` for font, sizing, centering,
 and wrapping. The `venue`, `rank`, and `tag` classes only select badge colors.
