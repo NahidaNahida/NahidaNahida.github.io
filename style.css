@@ -1,3 +1,12 @@
+@font-face {
+  font-family: "Site Kai";
+  src: url("assets/fonts/kaiti-sc-subset.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+3000-303F, U+3400-4DBF, U+4E00-9FFF, U+FF00-FFEF;
+}
+
 body{
   margin:0;
   font-family: "Palatino Linotype","Book Antiqua",Palatino,serif;
@@ -66,8 +75,9 @@ body{
     transition: margin-left 0.3s ease;
 }
 
-:lang(zh){
-  font-family: "KaiTi","STKaiti","Kaiti SC","Songti SC",serif;
+/* Use macOS's built-in Simplified Chinese Kai face when Chinese glyphs appear. */
+:lang(zh), :lang(zh-Hans), :lang(zh-CN), :lang(zh-SG), :lang(zh-TW), :lang(zh-Hant) {
+  font-family: "Site Kai", "楷体-简", "STKaitiSC-Regular", "Kaiti SC", KaiTi, serif;
 }
 
 h1{
@@ -138,29 +148,33 @@ a:hover{
 }
 
 .pub-badges {
-    display: flex;
+    /* An inline flex box keeps WebKit's list marker out of the first badge. */
+    display: inline-flex;
+    vertical-align: top;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 3px;
     width: fit-content;
+    max-width: 100%;
     margin-bottom: 4px;
-    vertical-align: baseline;
-}
-
-.pub-badges span + span {
-    margin-left: 3px;
-}
-
-.pub-badges .venue,
-.pub-badges .mybold,
-.pub-badges .rank,
-.pub-badges .tag {
-    display: inline-block;
-    padding: 0 6px;
-    border-radius: 3px;
-    color: #fff;
     font-size: 0.92em;
-    font-style: normal;
     font-weight: bold;
     line-height: 1.25;
+}
+
+.pub-badges > span {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    min-height: 1.6em;
+    max-width: 100%;
+    padding: 0.1em 6px;
+    border-radius: 3px;
+    color: #fff;
+    font-style: normal;
     text-align: center;
+    overflow-wrap: anywhere;
 }
 
 .pub-badges .venue,

@@ -15,6 +15,20 @@ The website includes my brief biography, research interests, selected publicatio
 - `site-config.js`: shared site configuration, including profile links, GitHub repository information, visit-count settings, and page navigation entries.
 - `site.js`: shared page behavior, including the header, navigation, table of contents, sidebar toggle, last-updated time, and page-visit counter.
 
+## Typography and publication badges
+
+Chinese text marked with `lang="zh"` uses the bundled Kai webfont subset, so
+the intended Kai face is available in Safari and on Windows without requiring
+the visitor to install a local font. The CSS keeps system Kai families as
+fallbacks. English body text and publication badges retain the Palatino stack.
+
+All publication badges share `.pub-badges > span` for font, sizing, centering,
+and wrapping. The `venue`, `rank`, and `tag` classes only select badge colors.
+The group uses `inline-flex` to avoid WebKit including a list marker in the
+first badge's height. Keep `<br>` immediately after the group so authors begin
+on the next line. The badge group wraps when space is limited; long descriptions
+can wrap inside a badge. New publications should reuse this structure rather than custom offsets.
+
 ## Analytics
 
 The site supports Google Analytics, following the common AcadHomepage setup. The frontend configuration lives in `site-config.js`:
