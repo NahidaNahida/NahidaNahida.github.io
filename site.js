@@ -11,8 +11,7 @@
 
         sidebar.id = 'sidebar';
         sidebar.innerHTML = `
-            <button id="toggle-sidebar" type="button">☰</button>
-            <nav id="toc">
+            <nav id="toc" aria-label="On this page">
                 <b>Contents</b>
                 <ul id="toc-list"></ul>
             </nav>
@@ -39,11 +38,7 @@
 
         const links = document.createElement('p');
         links.className = 'icon-links';
-        profile.links.forEach((profileLink, index) => {
-            if (index > 0) {
-                links.append(document.createTextNode(' | '));
-            }
-
+        profile.links.forEach((profileLink) => {
             const link = document.createElement('a');
             link.href = profileLink.href;
             link.target = '_blank';
@@ -51,6 +46,7 @@
 
             const icon = document.createElement('i');
             icon.className = profileLink.iconClass;
+            icon.setAttribute('aria-hidden', 'true');
             link.append(icon, document.createTextNode(` ${profileLink.label}`));
             links.appendChild(link);
         });
@@ -100,6 +96,7 @@
             link.textContent = page.label;
             if (page.id === currentPageId) {
                 link.classList.add('active');
+                link.setAttribute('aria-current', 'page');
             }
             nav.appendChild(link);
         });
@@ -116,7 +113,7 @@
         tocList.innerHTML = '';
 
         headings.forEach((heading) => {
-            const id = heading.textContent.trim().replace(/\s+/g, '_');
+            const id = heading.id || heading.textContent.trim().replace(/\s+/g, '_');
             heading.id = id;
 
             const li = document.createElement('li');
@@ -174,18 +171,6 @@
         updateActiveTocLink();
     };
 
-    const setupSidebarToggle = () => {
-        const toggle = document.getElementById('toggle-sidebar');
-        const sidebar = document.getElementById('sidebar');
-        if (!toggle || !sidebar) {
-            return;
-        }
-
-        toggle.addEventListener('click', () => {
-            sidebar.classList.toggle('hidden');
-        });
-    };
-
     const loadLastUpdated = () => {
         const updatedTimeEl = document.getElementById('updated-time');
         const github = config.github;
@@ -193,19 +178,31 @@
             return;
         }
 
-        fetch(`https://api.github.com/repos/${github.user}/${github.repo}/commits/${github.branch}`)
-            .then((response) => response.json())
-            .then((commit) => {
-                if (commit && commit.commit && commit.commit.author) {
-                    const updatedAt = new Date(commit.commit.author.date);
-                    updatedTimeEl.textContent = updatedAt.toLocaleString();
-                } else {
-                    updatedTimeEl.textContent = 'No commits yet';
+        fetch(`https://api.github.com/repos/${github.user}/${github.repo}/commits/${github.branch}`, {
+            signal: AbortSignal.timeout(10000)
+        })
+            .then((response) => {
+                // GitHub also returns JSON for errors; it is not evidence of an empty repository.
+                if (!response.ok) {
+                    const rateLimited = response.status === 429 ||
+                        (response.status === 403 && response.headers.get('X-RateLimit-Remaining') === '0');
+                    throw new Error(rateLimited ? 'GitHub API rate limit reached. Please try again later.' :
+                        `GitHub update request failed (HTTP ${response.status}).`);
                 }
+                return response.json();
+            })
+            .then((commit) => {
+                const date = commit && commit.commit && commit.commit.author && commit.commit.author.date;
+                const updatedAt = new Date(date || NaN);
+                if (!Number.isFinite(updatedAt.getTime())) {
+                    throw new Error('GitHub did not return a valid commit date.');
+                }
+                updatedTimeEl.textContent = updatedAt.toLocaleString();
+                updatedTimeEl.title = 'Latest commit on the configured GitHub branch.';
             })
             .catch((err) => {
-                console.error(err);
-                updatedTimeEl.textContent = 'Error fetching update time';
+                updatedTimeEl.textContent = 'Temporarily unavailable';
+                updatedTimeEl.title = err.name === 'TimeoutError' ? 'GitHub update request timed out.' : err.message;
             });
     };
 
@@ -315,7 +312,6 @@
         renderFooter();
         renderPageNav();
         generateTOC();
-        setupSidebarToggle();
         loadAnalytics();
         loadLastUpdated();
         loadVisitorMap();
