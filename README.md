@@ -13,7 +13,28 @@ The website includes my brief biography, research interests, selected publicatio
 - `publications.html`: selected publications page content.
 - `style.css`: shared layout, typography, sidebar, navigation, publication badges, and footer styles.
 - `site-config.js`: shared site configuration, including profile links, GitHub repository information, visit-count settings, and page navigation entries.
-- `site.js`: shared page behavior, including the header, navigation, table of contents, sidebar toggle, last-updated time, and page-visit counter.
+- `site.js`: shared page behavior, including the header, navigation, always-visible table of contents, last-updated time, and page-visit counter.
+
+## Typography and publication badges
+
+Chinese text marked with `lang="zh"` uses installed Kai fonts when available,
+with system family-name fallbacks for macOS and Windows. No webfont is
+downloaded, so the site does not add a large font request. English body text
+and publication badges retain the Palatino stack.
+
+All publication badges share `.pub-badges > span` for font, sizing, centering,
+and wrapping. The `venue`, `rank`, and `tag` classes only select badge colors.
+The group uses `inline-flex` to avoid WebKit including a list marker in the
+first badge's height. Keep `<br>` immediately after the group so authors begin
+on the next line. The badge group wraps when space is limited; long descriptions
+can wrap inside a badge. New publications should reuse this structure rather than custom offsets.
+
+News categories use the separate `.news-badge` class followed by `<br>`.
+The home avatar uses `figures/okita-avatar.webp`, a resized version of
+`figures/okita.png`, with the original PNG as a fallback.
+The last-updated footer displays the latest GitHub branch commit date when
+available. Rate limits, failed requests, and invalid dates show
+`Temporarily unavailable`; hover over the message for the reason.
 
 ## Analytics
 

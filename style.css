@@ -86,8 +86,9 @@ h2, h3 {
     box-shadow: 0 0 42px rgba(174, 93, 117, 0.08);
 }
 
-:lang(zh){
-  font-family: "KaiTi","STKaiti","Kaiti SC","Songti SC",serif;
+/* Prefer installed Kai fonts without downloading a webfont. */
+:lang(zh), :lang(zh-Hans), :lang(zh-CN), :lang(zh-SG), :lang(zh-TW), :lang(zh-Hant) {
+  font-family: "楷体-简", "STKaitiSC-Regular", "Kaiti SC", KaiTi, "STKaiti", serif;
 }
 
 h1{
@@ -242,33 +243,33 @@ a:focus-visible {
 }
 
 .pub-badges {
-    display: flex;
+    /* An inline flex box keeps WebKit's list marker out of the first badge. */
+    display: inline-flex;
+    vertical-align: top;
     flex-wrap: wrap;
+    align-items: flex-start;
     gap: 3px;
-    max-width: 100%;
     width: fit-content;
+    max-width: 100%;
     margin-bottom: 4px;
-    vertical-align: baseline;
-}
-
-.pub-badges span + span {
-    margin-left: 0;
-}
-
-.pub-badges .venue,
-.pub-badges .mybold,
-.pub-badges .rank,
-.pub-badges .tag,
-.news-badge {
-    display: inline-block;
-    padding: 0 6px;
-    border-radius: 3px;
-    color: #fff;
     font-size: 0.92em;
-    font-style: normal;
     font-weight: bold;
     line-height: 1.25;
+}
+
+.pub-badges > span {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    min-height: 1.6em;
+    max-width: 100%;
+    padding: 0.1em 6px;
+    border-radius: 3px;
+    color: #fff;
+    font-style: normal;
     text-align: center;
+    overflow-wrap: anywhere;
 }
 
 .pub-badges .venue,
@@ -284,13 +285,16 @@ a:focus-visible {
 }
 
 .news-badge {
-    display: table;
+    display: inline-block;
     margin-bottom: 4px;
     padding: 2px 9px;
     border: 1px solid var(--sakura-border);
     border-radius: 999px;
     background: var(--sakura-button);
     color: var(--sakura-link);
+    font-size: 0.92em;
+    font-weight: bold;
+    line-height: 1.25;
 }
 
 .pub-badges .tag {
